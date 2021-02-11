@@ -1,9 +1,22 @@
 use v6.c;
 
 use NativeCall;
+
 use GLib::Raw::Definitions;
 
+use GLib::Roles::Pointers;
+
 unit package Champlain::Raw::Definitions;
+
+# Forced compile counter
+constant forced = 0;
+
+constant champlain is export = 'champlain-0.12',v0;
+
+class ChamplainLayer       is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMarker      is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMarkerLayer is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainView        is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 constant ChamplainMapProjection is export := guint32;
 our enum ChamplainMapProjectionEnum is export <
@@ -31,7 +44,7 @@ our enum ChamplainUnitEnum is export <
   CHAMPLAIN_UNIT_MILES
 >;
 
-class ChamplainBoundingBox is repr<CStruct> does GLib::Roles::Pointers {
+class ChamplainBoundingBox is export is repr<CStruct> does GLib::Roles::Pointers {
   has gdouble $.left   is rw;
   has gdouble $.top    is rw;
   has gdouble $.right  is rw;
