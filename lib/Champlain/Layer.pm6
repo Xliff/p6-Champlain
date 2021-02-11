@@ -1,5 +1,6 @@
 use v6.c;
 
+use Method::Also;
 use NativeCall;
 
 use Champlain::Raw::Types;
@@ -19,9 +20,9 @@ class Champlain::Layer is Clutter::Actor {
   method setChamplainLayer(ChamplainLayerAncestry $_) {
     my $to-parent;
 
-    $!b = do {
+    $!cl = do {
       when ChamplainLayer {
-        $to-parent = cast(GstObject, $_);
+        $to-parent = cast(ClutterActor, $_);
         $_;
       }
 
@@ -35,7 +36,7 @@ class Champlain::Layer is Clutter::Actor {
 
   method GStreamer::Raw::Definitions::ChamplainLayer
     is also<ChamplainLayer>
-  { $!b }
+  { $!cl }
 
   multi method new (ChamplainLayerAncestry $layer, :$ref = True) {
     return Nil unless $layer;
@@ -46,7 +47,7 @@ class Champlain::Layer is Clutter::Actor {
   }
 
   method get_bounding_box {
-    champlain_layer_get_bounding_box($!l);
+    champlain_layer_get_bounding_box($!cl);
   }
 
   method get_type {
@@ -61,7 +62,7 @@ class Champlain::Layer is Clutter::Actor {
   }
 
   method set_view (ChamplainView $view) {
-    champlain_layer_set_view($!l, $view);
+    champlain_layer_set_view($!cl, $view);
   }
 
 }
