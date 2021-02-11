@@ -34,7 +34,7 @@ class Champlain::Layer is Clutter::Actor {
     self.setClutterActor($to-parent);
   }
 
-  method GStreamer::Raw::Definitions::ChamplainLayer
+  method Champlain::Raw::Definitions::ChamplainLayer
     is also<ChamplainLayer>
   { $!cl }
 
