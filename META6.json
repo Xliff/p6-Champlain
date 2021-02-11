@@ -1,0 +1,24 @@
+{
+    "depends": [
+	    "p6-Clutter",
+    ],
+    "description": "Perl6 library bindings for GNOME's libchamplain library",
+    "version": "r0.0.1",
+    "meta-version": "0",
+    "source-url": "https://github.com/Xliff/p6-Champlain",
+    "provides": {
+
+    },
+    "name": "Perl6-Champlain",
+    "perl": "6.c",
+    "test-depends": [ "Test::META" ],
+    "build-depends": [
+      "Text::Table::Simple",
+      "Dependency::Sort",
+      "Color",
+      "RandomColor",
+      "File::Find"
+    ],
+    "support": { "source": null },
+    "authors": [ "clifton.wood@gmail.com" ]
+}
