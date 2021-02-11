@@ -1,8 +1,11 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::PathLayer;
 
+use GLib::GList;
 use Clutter::Color;
 use Champlain::Layer;
 
@@ -12,7 +15,7 @@ our subset ChamplainPathLayerAncestry is export of Mu
   where ChamplainPathLayer | ChamplainLayerAncestry;
 
 class Champlain::PathLayer is Champlain::Layer {
-  has ChamplainPathLayer $!pl
+  has ChamplainPathLayer $!cpl;
 
   submethod BUILD (:$path-layer) {
     self.setChamplainPathLayer($path-layer) if $path-layer;
@@ -46,7 +49,7 @@ class Champlain::PathLayer is Champlain::Layer {
     $o.ref if $ref;
     $o;
   }
-  method new {
+  multi method new {
     my $path-layer = champlain_path_layer_new();
 
     $path-layer ?? self.bless( :$path-layer ) !! Nil;
@@ -87,7 +90,7 @@ class Champlain::PathLayer is Champlain::Layer {
   }
 
   # Type: ClutterColor
-  method fill-color (:$raw = False) is rw  {
+  method fill-color (:$raw = False) is rw  is also<fill_color> {
     my $gv = GLib::Value.new( Clutter::Color.get-type );
     Proxy.new(
       FETCH => sub ($) {
@@ -127,7 +130,7 @@ class Champlain::PathLayer is Champlain::Layer {
   }
 
   # Type: ClutterColor
-  method stroke-color is rw  {
+  method stroke-color (:$raw = False) is rw  is also<stroke_color> {
     my $gv = GLib::Value.new( Clutter::Color.get-type );
     Proxy.new(
       FETCH => sub ($) {
@@ -143,14 +146,14 @@ class Champlain::PathLayer is Champlain::Layer {
         );
       },
       STORE => -> $, ClutterColor() $val is copy {
-        $gv.object = $object;
+        $gv.object = $val;
         self.prop_set('stroke-color', $gv);
       }
     );
   }
 
   # Type: gdouble
-  method stroke-width is rw  {
+  method stroke-width is rw  is also<stroke_width> {
     my $gv = GLib::Value.new( G_TYPE_DOUBLE );
     Proxy.new(
       FETCH => sub ($) {
@@ -183,15 +186,15 @@ class Champlain::PathLayer is Champlain::Layer {
     );
   }
 
-  method add_node (ChamplainLocation() $location) {
+  method add_node (ChamplainLocation() $location) is also<add-node> {
     champlain_path_layer_add_node($!cpl, $location);
   }
 
-  method get_closed {
-    so hamplain_path_layer_get_closed($!cpl);
+  method get_closed is also<get-closed> {
+    so champlain_path_layer_get_closed($!cpl);
   }
 
-  method get_dash (:$glist = False, :$raw = False) {
+  method get_dash (:$glist = False, :$raw = False) is also<get-dash> {
     returnGList(
       champlain_path_layer_get_dash($!cpl),
       $glist,
@@ -200,12 +203,12 @@ class Champlain::PathLayer is Champlain::Layer {
     );
   }
 
-  method get_fill {
+  method get_fill is also<get-fill> {
     so champlain_path_layer_get_fill($!cpl);
   }
 
   # Transfer: unknown
-  method get_fill_color (:$raw = False) {
+  method get_fill_color (:$raw = False) is also<get-fill-color> {
     my $cc = champlain_path_layer_get_fill_color($!cpl);
 
     $cc ??
@@ -214,9 +217,9 @@ class Champlain::PathLayer is Champlain::Layer {
       Nil
   }
 
-  method get_nodes (:$glist = False, :$raw = False) {
+  method get_nodes (:$glist = False, :$raw = False) is also<get-nodes> {
     returnGList(
-      champlain_path_layer_get_nodes($!cpl).
+      champlain_path_layer_get_nodes($!cpl),
       $glist,
       $raw,
       ChamplainLocation,
@@ -224,12 +227,12 @@ class Champlain::PathLayer is Champlain::Layer {
     )
   }
 
-  method get_stroke {
+  method get_stroke is also<get-stroke> {
     so champlain_path_layer_get_stroke($!cpl);
   }
 
   # Transfer: unknown
-  method get_stroke_color (:$raw = False) {
+  method get_stroke_color (:$raw = False) is also<get-stroke-color> {
     my $cc = champlain_path_layer_get_stroke_color($!cpl);
 
     $cc ??
@@ -238,11 +241,11 @@ class Champlain::PathLayer is Champlain::Layer {
       Nil
   }
 
-  method get_stroke_width {
+  method get_stroke_width is also<get-stroke-width> {
     champlain_path_layer_get_stroke_width($!cpl);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -253,61 +256,63 @@ class Champlain::PathLayer is Champlain::Layer {
     );
   }
 
-  method get_visible {
+  method get_visible is also<get-visible> {
     so champlain_path_layer_get_visible($!cpl);
   }
 
-  method insert_node (ChamplainLocation() $location, Int() $position) {
+  method insert_node (ChamplainLocation() $location, Int() $position)
+    is also<insert-node>
+  {
     my guint $p = $position;
 
     champlain_path_layer_insert_node($!cpl, $location, $position);
   }
 
-  method remove_all {
+  method remove_all is also<remove-all> {
     champlain_path_layer_remove_all($!cpl);
   }
 
-  method remove_node (ChamplainLocation() $location) {
+  method remove_node (ChamplainLocation() $location) is also<remove-node> {
     champlain_path_layer_remove_node($!cpl, $location);
   }
 
-  method set_closed (Int() $value) {
+  method set_closed (Int() $value) is also<set-closed> {
     my gboolean $v = $value.so.Int;
 
     champlain_path_layer_set_closed($!cpl, $value);
   }
 
-  method set_dash (GList() $dash_pattern) {
+  method set_dash (GList() $dash_pattern) is also<set-dash> {
     champlain_path_layer_set_dash($!cpl, $dash_pattern);
   }
 
-  method set_fill (Int() $value) {
+  method set_fill (Int() $value) is also<set-fill> {
     my gboolean $v = $value.so.Int;
 
     champlain_path_layer_set_fill($!cpl, $value);
   }
 
-  method set_fill_color (ClutterColor() $color) {
+  method set_fill_color (ClutterColor() $color) is also<set-fill-color> {
     champlain_path_layer_set_fill_color($!cpl, $color);
   }
 
-  method set_stroke (Int() $value) {
+  method set_stroke (Int() $value) is also<set-stroke> {
     my gboolean $v = $value.so.Int;
 
     champlain_path_layer_set_stroke($!cpl, $value);
   }
 
-  method set_stroke_color (ClutterColor() $color) {
+  method set_stroke_color (ClutterColor() $color) is also<set-stroke-color> {
     champlain_path_layer_set_stroke_color($!cpl, $color);
   }
 
-  method set_stroke_width (Int() $value) {
+  method set_stroke_width (Int() $value) is also<set-stroke-width> {
     my gboolean $v = $value.so.Int;
 
     champlain_path_layer_set_stroke_width($!cpl, $value);
   }
 
-  method set_visible (Int() $value) {
+  method set_visible (Int() $value) is also<set-visible> {
     my gboolean $v = $value.so.Int;
 
     champlain_path_layer_set_visible($!cpl, $value);
