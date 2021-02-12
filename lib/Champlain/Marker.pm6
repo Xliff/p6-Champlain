@@ -23,7 +23,7 @@ class Champlain::Marker is Clutter::Actor {
   method setChamplainMarker(ChamplainMarkerAncestry $_) {
     my $to-parent;
 
-    $!cl = do {
+    $!cm = do {
       when ChamplainMarker {
         $to-parent = cast(ClutterActor, $_);
         $_;
@@ -38,7 +38,7 @@ class Champlain::Marker is Clutter::Actor {
   }
 
   method Champlain::Raw::Definitions::ChamplainMarker
-  { $!cl }
+  { $!cm }
 
   multi method new (ChamplainMarkerAncestry $marker, :$ref = True) {
     return Nil unless $marker;
