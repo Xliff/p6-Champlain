@@ -18,6 +18,7 @@ class ChamplainLocation    is repr<CPointer> is export does GLib::Roles::Pointer
 class ChamplainMarker      is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarkerLayer is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainPathLayer   is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainPoint       is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainView        is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 constant ChamplainMapProjection is export := guint32;
