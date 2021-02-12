@@ -3,6 +3,8 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use Clutter::Raw::Definitions;
+use Clutter::Raw::Structs;
 use Champlain::Raw::Definitions;
 
 unit package Champlain::Raw::Marker;

@@ -155,7 +155,7 @@ class Champlain::Marker is Clutter::Actor {
   }
 
   method get_selection_color (:$raw = False) {
-    my $cc = champlain_marker_get_selection_color($!cm);
+    my $cc = champlain_marker_get_selection_color();
 
     $cc ??
       ( $raw ?? $cc !! Clutter::Color.new($cc) )
@@ -164,7 +164,7 @@ class Champlain::Marker is Clutter::Actor {
   }
 
   method get_selection_text_color (:$raw = False) {
-    champlain_marker_get_selection_text_color($!cm);
+    my $cc = champlain_marker_get_selection_text_color();
 
     $cc ??
       ( $raw ?? $cc !! Clutter::Color.new($cc) )
@@ -205,13 +205,13 @@ class Champlain::Marker is Clutter::Actor {
     Champlain::Marker:U:
     ClutterColor() $color
   ) {
-    champlain_marker_set_selection_color($cc);
+    champlain_marker_set_selection_color($color);
   }
 
   method set_selection_text_color (
     Champlain::Marker:U:
     ClutterColor() $color
   ) {
-    champlain_marker_set_selection_text_color($cc);
+    champlain_marker_set_selection_text_color($color);
   }
 }
