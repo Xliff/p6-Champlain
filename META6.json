@@ -16,6 +16,7 @@
       "Champlain::Raw::Point"       :  "lib/Champlain/Raw/Point.pm6"       ,
       "Champlain::Raw::Exports"     :  "lib/Champlain/Raw/Exports.pm6"     ,
       "Champlain::Raw::Types"       :  "lib/Champlain/Raw/Types.pm6"       ,
+      "Champlain::Renderer"         :  "lib/Champlain/Renderer.pm6"        ,
       "Champlain::Roles::Location"  :  "lib/Champlain/Roles/Location.pm6"  ,
       "Champlain::BoundingBox"      :  "lib/Champlain/BoundingBox.pm6"     ,
       "Champlain::Coordinate"       :  "lib/Champlain/Coordinate.pm6"      ,
