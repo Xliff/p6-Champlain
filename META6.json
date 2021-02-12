@@ -13,6 +13,7 @@
       "Champlain::Raw::Marker"      :  "lib/Champlain/Raw/Marker.pm6"      ,
       "Champlain::Raw::MarkerLayer" :  "lib/Champlain/Raw/MarkerLayer.pm6" ,
       "Champlain::Raw::PathLayer"   :  "lib/Champlain/Raw/PathLayer.pm6"   ,
+      "Champlain::Raw::Point"       :  "lib/Champlain/Raw/Point.pm6"       ,
       "Champlain::Raw::Exports"     :  "lib/Champlain/Raw/Exports.pm6"     ,
       "Champlain::Raw::Types"       :  "lib/Champlain/Raw/Types.pm6"       ,
       "Champlain::Roles::Location"  :  "lib/Champlain/Roles/Location.pm6"  ,
@@ -21,6 +22,7 @@
       "Champlain::Marker"           :  "lib/Champlain/Marker.pm6"          ,
       "Champlain::MarkerLayer"      :  "lib/Champlain/MarkerLayer.pm6"     ,
       "Champlain::PathLayer"        :  "lib/Champlain/PathLayer.pm6"       ,
+      "Champlain::Point"            :  "lib/Champlain/Point.pm6"           ,
       "Champlain::Label"            :  "lib/Champlain/Label.pm6"           
     },
     "name": "Perl6-Champlain",
