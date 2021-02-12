@@ -13,6 +13,7 @@ constant forced = 0;
 
 constant champlain is export = 'champlain-0.12',v0;
 
+class ChamplainCoordinate  is repr<CPointer> is export does GLib::Roles::Pointers { } 
 class ChamplainLayer       is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainLocation    is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarker      is repr<CPointer> is export does GLib::Roles::Pointers { }

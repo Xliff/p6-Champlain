@@ -18,6 +18,7 @@
       "Champlain::Raw::Types"       :  "lib/Champlain/Raw/Types.pm6"       ,
       "Champlain::Roles::Location"  :  "lib/Champlain/Roles/Location.pm6"  ,
       "Champlain::BoundingBox"      :  "lib/Champlain/BoundingBox.pm6"     ,
+      "Champlain::Coordinate"       :  "lib/Champlain/Coordinate.pm6"      ,
       "Champlain::Layer"            :  "lib/Champlain/Layer.pm6"           ,
       "Champlain::Marker"           :  "lib/Champlain/Marker.pm6"          ,
       "Champlain::MarkerLayer"      :  "lib/Champlain/MarkerLayer.pm6"     ,
