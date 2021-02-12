@@ -9,6 +9,8 @@
     "provides": {
       "Champlain::Raw::Definitions" :  "lib/Champlain/Raw/Definitions.pm6" ,
       "Champlain::Raw::BoundingBox" :  "lib/Champlain/Raw/BoundingBox.pm6" ,
+      "Champlain::Raw::Label"       :  "lib/Champlain/Raw/Label.pm6"       ,
+      "Champlain::Raw::Marker"      :  "lib/Champlain/Raw/Marker.pm6"      ,
       "Champlain::Raw::MarkerLayer" :  "lib/Champlain/Raw/MarkerLayer.pm6" ,
       "Champlain::Raw::PathLayer"   :  "lib/Champlain/Raw/PathLayer.pm6"   ,
       "Champlain::Raw::Exports"     :  "lib/Champlain/Raw/Exports.pm6"     ,
@@ -16,8 +18,10 @@
       "Champlain::Roles::Location"  :  "lib/Champlain/Roles/Location.pm6"  ,
       "Champlain::BoundingBox"      :  "lib/Champlain/BoundingBox.pm6"     ,
       "Champlain::Layer"            :  "lib/Champlain/Layer.pm6"           ,
+      "Champlain::Marker"           :  "lib/Champlain/Marker.pm6"          ,
       "Champlain::MarkerLayer"      :  "lib/Champlain/MarkerLayer.pm6"     ,
-      "Champlain::PathLayer"        :  "lib/Champlain/PathLayer.pm6"       
+      "Champlain::PathLayer"        :  "lib/Champlain/PathLayer.pm6"       ,
+      "Champlain::Label"            :  "lib/Champlain/Label.pm6"           
     },
     "name": "Perl6-Champlain",
     "perl": "6.c",
