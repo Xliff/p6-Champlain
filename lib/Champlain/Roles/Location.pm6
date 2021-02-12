@@ -7,6 +7,12 @@ use Champlain::Raw::Types;
 role Champlain::Roles::Location {
   has ChamplainLocation $!cl;
 
+  method roleInit-ChamplainLocation {
+    my \i = findProperImplementor(self.^attributes);
+
+    $!cl = cast( ChamplainLocation, i.get_value(self) );
+  }
+
   method get_latitude {
     champlain_location_get_latitude($!cl);
   }

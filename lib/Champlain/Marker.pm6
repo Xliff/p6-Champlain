@@ -35,6 +35,7 @@ class Champlain::Marker is Clutter::Actor {
       }
     }
     self.setClutterActor($to-parent);
+    self.roleInit-ChamplainLocation;
   }
 
   method Champlain::Raw::Definitions::ChamplainMarker
