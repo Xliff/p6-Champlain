@@ -92,7 +92,7 @@ class Champlain::MapSource {
   }
 
   method fill_tile (ChamplainTile() $tile) {
-    champlain_map_source_fill_tile($!cms, $tile);
+    champlain_map_source_fill_tile(!cms, $tile);
   }
 
   method get_column_count (Int() $zoom_level) {
