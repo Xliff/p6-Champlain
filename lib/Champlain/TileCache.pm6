@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use NativeCall;
 
 use Champlain::Raw::Types;
@@ -34,6 +36,7 @@ class Champlain::TileCache is Champlain::MapSource {
   }
 
   method Champlain::Raw::Definitions::ChamplainTileCache
+    is also<ChamplainTileCache>
   { $!ctc }
 
   multi method new (ChamplainTileCacheAncestry $tile-cache, :$ref = True) {
@@ -44,7 +47,7 @@ class Champlain::TileCache is Champlain::MapSource {
     $o
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -55,15 +58,15 @@ class Champlain::TileCache is Champlain::MapSource {
     );
   }
 
-  method on_tile_filled (ChamplainTile() $tile) {
+  method on_tile_filled (ChamplainTile() $tile) is also<on-tile-filled> {
     champlain_tile_cache_on_tile_filled($!ctc, $tile);
   }
 
-  method refresh_tile_time (ChamplainTile() $tile) {
+  method refresh_tile_time (ChamplainTile() $tile) is also<refresh-tile-time> {
     champlain_tile_cache_refresh_tile_time($!ctc, $tile);
   }
 
-  method store_tile (ChamplainTile() $tile, Str() $contents, Int() $size) {
+  method store_tile (ChamplainTile() $tile, Str() $contents, Int() $size) is also<store-tile> {
     my gsize $s = $size;
 
     champlain_tile_cache_store_tile($!ctc, $tile, $contents, $s);
