@@ -92,22 +92,7 @@ sub MAIN {
                                    (45.4151, -73.1218);
 
   $layer1.stroke-width = 4;
-
-  {
-    use NativeCall;
-    use GLib::Raw::Definitions;
-    use GLib::Raw::Structs;
-    use GLib::Raw::GList;
-    use Champlain::Raw::PathLayer;
-
-    my ($d1, $d2) = CArray[guint32].new xx 2;
-    ($d1[0], $d2[0]) = (6, 2);
-    my GList $gl = GList;
-    $gl = g_list_append($gl, Pointer.new(6) );
-    $gl = g_list_append($gl, Pointer.new(2) );
-
-    champlain_path_layer_set_dash($layer1.ChamplainPathLayer, $gl);
-  }
+  $layer1.set-dash(6, 2);
 
   my $layer2 = Champlain::PathLayer.new;
   $layer2.&append-point( |$_ ) for (45.1386, -73.9196),

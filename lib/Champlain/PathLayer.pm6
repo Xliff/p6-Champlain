@@ -295,7 +295,7 @@ class Champlain::PathLayer is Champlain::Layer {
   multi method set_dash (@dash-pattern) {
     die 'Parameters to .set-dash() must be integers!'
       unless @dash-pattern.all ~~ Int;
-    samewith( GLib::GList.new(@dash-pattern)  );
+    samewith( GLib::GList.new(@dash-pattern, :direct)  );
   }
   multi method set_dash (GList() $dash_pattern) {
     champlain_path_layer_set_dash($!cpl, $dash_pattern);
