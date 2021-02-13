@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::MapSource;
 
@@ -35,6 +37,7 @@ class Champlain::MapSource {
   }
 
   method Champlain::Raw::Definitions::ChamplainMapSource
+    is also<ChamplainMapSource>
   { $!cms }
 
   multi method new (ChamplainMapSourceAncestry $map-source, :$ref = True) {
@@ -46,7 +49,7 @@ class Champlain::MapSource {
   }
 
   # Type: ChamplainMapSource
-  method next-source (:$raw = False) is rw  {
+  method next-source (:$raw = False) is rw  is also<next_source> {
     my $gv = GLib::Value.new( Champlain::MapSource.get_type );
     Proxy.new(
       FETCH => sub ($) {
@@ -91,43 +94,43 @@ class Champlain::MapSource {
     );
   }
 
-  method fill_tile (ChamplainTile() $tile) {
+  method fill_tile (ChamplainTile() $tile) is also<fill-tile> {
     champlain_map_source_fill_tile($!cms, $tile);
   }
 
-  method get_column_count (Int() $zoom_level) {
+  method get_column_count (Int() $zoom_level) is also<get-column-count> {
     my guint $z = $zoom_level;
 
     champlain_map_source_get_column_count($!cms, $z);
   }
 
-  method get_id {
+  method get_id is also<get-id> {
     champlain_map_source_get_id($!cms);
   }
 
-  method get_latitude (Int() $zoom_level, Num() $y) {
+  method get_latitude (Int() $zoom_level, Num() $y) is also<get-latitude> {
     my guint   $z  = $zoom_level;
     my gdouble $yy = $y;
 
     champlain_map_source_get_latitude($!cms, $z, $y);
   }
 
-  method get_license {
+  method get_license is also<get-license> {
     champlain_map_source_get_license($!cms);
   }
 
-  method get_license_uri {
+  method get_license_uri is also<get-license-uri> {
     champlain_map_source_get_license_uri($!cms);
   }
 
-  method get_longitude (Int() $zoom_level, Num() $x) {
+  method get_longitude (Int() $zoom_level, Num() $x) is also<get-longitude> {
     my guint   $z  = $zoom_level;
     my gdouble $xx = $x;
 
     champlain_map_source_get_longitude($!cms, $z, $xx);
   }
 
-  method get_max_zoom_level {
+  method get_max_zoom_level is also<get-max-zoom-level> {
     champlain_map_source_get_max_zoom_level($!cms);
   }
 
@@ -135,23 +138,23 @@ class Champlain::MapSource {
     Int() $zoom_level,
     Num() $latitude,
     Num() $longitude
-  ) {
+  ) is also<get-meters-per-pixel> {
     my guint   $z            = $zoom_level;
     my gdouble ($lat, $long) = ($latitude, $longitude);
 
     champlain_map_source_get_meters_per_pixel($!cms, $z, $lat, $long);
   }
 
-  method get_min_zoom_level {
+  method get_min_zoom_level is also<get-min-zoom-level> {
     champlain_map_source_get_min_zoom_level($!cms);
   }
 
-  method get_name {
+  method get_name is also<get-name> {
     champlain_map_source_get_name($!cms);
   }
 
   # Transfer: none
-  method get_next_source (:$raw = False) {
+  method get_next_source (:$raw = False) is also<get-next-source> {
     my $ms = champlain_map_source_get_next_source($!cms);
 
     $ms ??
@@ -160,12 +163,12 @@ class Champlain::MapSource {
       Nil;
   }
 
-  method get_projection {
+  method get_projection is also<get-projection> {
     champlain_map_source_get_projection($!cms);
   }
 
   # Transfer: none
-  method get_renderer (:$raw = False) {
+  method get_renderer (:$raw = False) is also<get-renderer> {
     my $r = champlain_map_source_get_renderer($!cms);
 
     $r ??
@@ -174,17 +177,17 @@ class Champlain::MapSource {
       Nil;
   }
 
-  method get_row_count (Int() $zoom_level) {
+  method get_row_count (Int() $zoom_level) is also<get-row-count> {
     my guint $z = $zoom_level;
 
     champlain_map_source_get_row_count($!cms, $z);
   }
 
-  method get_tile_size {
+  method get_tile_size is also<get-tile-size> {
     champlain_map_source_get_tile_size($!cms);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -195,25 +198,25 @@ class Champlain::MapSource {
     );
   }
 
-  method get_x (Int() $zoom_level, Num() $longitude) {
+  method get_x (Int() $zoom_level, Num() $longitude) is also<get-x> {
     my guint   $z = $zoom_level;
     my gdouble $l = $longitude;
 
     champlain_map_source_get_x($!cms, $z, $l);
   }
 
-  method get_y (Int() $zoom_level, Num() $latitude) {
+  method get_y (Int() $zoom_level, Num() $latitude) is also<get-y> {
     my guint   $z = $zoom_level;
     my gdouble $l = $latitude;
 
     champlain_map_source_get_y($!cms, $z, $l);
   }
 
-  method set_next_source (ChamplainMapSource() $next_source) {
+  method set_next_source (ChamplainMapSource() $next_source) is also<set-next-source> {
     champlain_map_source_set_next_source($!cms, $next_source);
   }
 
-  method set_renderer (ChamplainRenderer() $renderer) {
+  method set_renderer (ChamplainRenderer() $renderer) is also<set-renderer> {
     champlain_map_source_set_renderer($!cms, $renderer);
   }
 
