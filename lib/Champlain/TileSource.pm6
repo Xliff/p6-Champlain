@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::TileSource;
 
@@ -34,6 +36,7 @@ class Champlain::TileSource is Champlain::MapSource {
   }
 
   method Champlain::Raw::Definitions::ChamplainTileSource
+    is also<ChamplainTileSource>
   { $!cts }
 
   multi method new (ChamplainTileSourceAncestry $tile-source, :$ref = True) {
@@ -100,7 +103,7 @@ class Champlain::TileSource is Champlain::MapSource {
   }
 
   # Type: gchar
-  method license-uri is rw  {
+  method license-uri is rw  is also<license_uri> {
     my $gv = GLib::Value.new( G_TYPE_STRING );
     Proxy.new(
       FETCH => sub ($) {
@@ -116,7 +119,7 @@ class Champlain::TileSource is Champlain::MapSource {
   }
 
   # Type: guint
-  method max-zoom-level is rw  {
+  method max-zoom-level is rw  is also<max_zoom_level> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -132,7 +135,7 @@ class Champlain::TileSource is Champlain::MapSource {
   }
 
   # Type: guint
-  method min-zoom-level is rw  {
+  method min-zoom-level is rw  is also<min_zoom_level> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -182,7 +185,7 @@ class Champlain::TileSource is Champlain::MapSource {
   }
 
   # Type: guint
-  method tile-size is rw  {
+  method tile-size is rw  is also<tile_size> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -198,7 +201,7 @@ class Champlain::TileSource is Champlain::MapSource {
   }
 
   # Transfer: none
-  method get_cache (:$raw = False) {
+  method get_cache (:$raw = False) is also<get-cache> {
     my $tc = champlain_tile_source_get_cache($!cts);
 
     $tc ??
@@ -207,7 +210,7 @@ class Champlain::TileSource is Champlain::MapSource {
       Nil;
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -218,45 +221,45 @@ class Champlain::TileSource is Champlain::MapSource {
     );
   }
 
-  method set_cache (ChamplainTileCache() $cache) {
+  method set_cache (ChamplainTileCache() $cache) is also<set-cache> {
     champlain_tile_source_set_cache($!cts, $cache);
   }
 
-  method set_id (Str() $id) {
+  method set_id (Str() $id) is also<set-id> {
     champlain_tile_source_set_id($!cts, $id);
   }
 
-  method set_license (Str() $license) {
+  method set_license (Str() $license) is also<set-license> {
     champlain_tile_source_set_license($!cts, $license);
   }
 
-  method set_license_uri (Str() $license_uri) {
+  method set_license_uri (Str() $license_uri) is also<set-license-uri> {
     champlain_tile_source_set_license_uri($!cts, $license_uri);
   }
 
-  method set_max_zoom_level (Int() $zoom_level) {
+  method set_max_zoom_level (Int() $zoom_level) is also<set-max-zoom-level> {
     my guint $z = $zoom_level;
 
     champlain_tile_source_set_max_zoom_level($!cts, $z);
   }
 
-  method set_min_zoom_level (Int() $zoom_level) {
+  method set_min_zoom_level (Int() $zoom_level) is also<set-min-zoom-level> {
     my guint $z = $zoom_level;
 
     champlain_tile_source_set_min_zoom_level($!cts, $z);
   }
 
-  method set_name (Str() $name) {
+  method set_name (Str() $name) is also<set-name> {
     champlain_tile_source_set_name($!cts, $name);
   }
 
-  method set_projection (Int() $projection) {
+  method set_projection (Int() $projection) is also<set-projection> {
     my ChamplainMapProjection $p = $projection;
 
     champlain_tile_source_set_projection($!cts, $p);
   }
 
-  method set_tile_size (Int() $tile_size) {
+  method set_tile_size (Int() $tile_size) is also<set-tile-size> {
     my guint $t = $tile_size;
 
     champlain_tile_source_set_tile_size($!cts, $t);
