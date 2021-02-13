@@ -298,10 +298,6 @@ class Champlain::PathLayer is Champlain::Layer {
     samewith( GLib::GList.new(@dash-pattern)  );
   }
   multi method set_dash (GList() $dash_pattern) {
-    my $d = GLib::GList.new($dash_pattern) but GLib::Roles::ListData[uint32];
-    +$dash_pattern.data.say;
-    +$dash_pattern.next.data.say;
-    $d.Array.gist.say;
     champlain_path_layer_set_dash($!cpl, $dash_pattern);
   }
 
