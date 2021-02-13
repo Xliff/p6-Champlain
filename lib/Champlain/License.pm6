@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::License;
 
@@ -34,6 +36,7 @@ class Champlain::License is Clutter::Actor {
   }
 
   method Champlain::Raw::Definitions::ChamplainLicense
+    is also<ChamplainLicense>
   { $!cl }
 
   multi method new (ChamplainLicenseAncestry $license, :$ref = True) {
@@ -67,7 +70,7 @@ class Champlain::License is Clutter::Actor {
    }
 
    # Type: gchar
-   method extra-text is rw  {
+   method extra-text is rw  is also<extra_text> {
      my $gv = GLib::Value.new( G_TYPE_STRING );
      Proxy.new(
        FETCH => sub ($) {
@@ -83,23 +86,23 @@ class Champlain::License is Clutter::Actor {
      );
    }
 
-  method connect_view (ChamplainView() $view) {
+  method connect_view (ChamplainView() $view) is also<connect-view> {
     champlain_license_connect_view($!cl, $view);
   }
 
-  method disconnect_view {
+  method disconnect_view is also<disconnect-view> {
     champlain_license_disconnect_view($!cl);
   }
 
-  method get_alignment {
+  method get_alignment is also<get-alignment> {
     PangoAlignmentEnum( champlain_license_get_alignment($!cl) );
   }
 
-  method get_extra_text {
+  method get_extra_text is also<get-extra-text> {
     champlain_license_get_extra_text($!cl);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -110,13 +113,13 @@ class Champlain::License is Clutter::Actor {
     );
   }
 
-  method set_alignment (Int() $alignment) {
+  method set_alignment (Int() $alignment) is also<set-alignment> {
     my PangoAlignment $a = $alignment;
 
     champlain_license_set_alignment($!cl, $alignment);
   }
 
-  method set_extra_text (Str() $text) {
+  method set_extra_text (Str() $text) is also<set-extra-text> {
     champlain_license_set_extra_text($!cl, $text);
   }
 
