@@ -45,7 +45,7 @@ sub append-point($layer, $lon, $lat) {
 }
 
 sub MAIN {
-  exit(1) unless Clutter::Main.init;
+  exit(1) unless Clutter::Main.init == CLUTTER_INIT_SUCCESS;
 
   my $stage = Clutter::Stage.new.setup(
     size => (800, 600),
