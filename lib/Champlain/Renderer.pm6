@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use NativeCall;
 use NativeHelpers::Blob;
 
@@ -12,7 +14,7 @@ class Champlain::Renderer {
 
   has ChamplainRenderer $!cr is implementor;
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -28,6 +30,7 @@ class Champlain::Renderer {
   }
 
   proto method set_data (|)
+      is also<set-data>
   { * }
 
   multi method set_data (@data) {
