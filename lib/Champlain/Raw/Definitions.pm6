@@ -24,6 +24,8 @@ class ChamplainPathLayer   is repr<CPointer> is export does GLib::Roles::Pointer
 class ChamplainPoint       is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainRenderer    is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainTile        is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainTileCache   is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainTileSource  is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainView        is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 constant ChamplainMapProjection is export := guint32;

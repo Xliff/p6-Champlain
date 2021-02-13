@@ -16,6 +16,7 @@
       "Champlain::Raw::MarkerLayer" :  "lib/Champlain/Raw/MarkerLayer.pm6" ,
       "Champlain::Raw::PathLayer"   :  "lib/Champlain/Raw/PathLayer.pm6"   ,
       "Champlain::Raw::Point"       :  "lib/Champlain/Raw/Point.pm6"       ,
+      "Champlain::Raw::TileSource"  :  "lib/Champlain/Raw/TileSource.pm6"  ,
       "Champlain::Raw::Exports"     :  "lib/Champlain/Raw/Exports.pm6"     ,
       "Champlain::Raw::Types"       :  "lib/Champlain/Raw/Types.pm6"       ,
       "Champlain::Raw::View"        :  "lib/Champlain/Raw/View.pm6"        ,
@@ -30,6 +31,8 @@
       "Champlain::MarkerLayer"      :  "lib/Champlain/MarkerLayer.pm6"     ,
       "Champlain::PathLayer"        :  "lib/Champlain/PathLayer.pm6"       ,
       "Champlain::Point"            :  "lib/Champlain/Point.pm6"           ,
+      "Champlain::TileCache"        :  "lib/Champlain/TileCache.pm6"       ,
+      "Champlain::TileSource"       :  "lib/Champlain/TileSource.pm6"      ,
       "Champlain::View"             :  "lib/Champlain/View.pm6"            ,
       "Champlain::Label"            :  "lib/Champlain/Label.pm6"           
     },
