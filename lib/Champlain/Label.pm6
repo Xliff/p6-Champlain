@@ -1,5 +1,8 @@
 use v6.c;
 
+use Method::Also;
+use NativeCall;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::Label;
 
@@ -36,6 +39,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   method Champlain::Raw::Definitions::ChamplainLabel
+    is also<ChamplainLabel>
   { $!cl }
 
   multi method new (ChamplainLabelAncestry $marker, :$ref = True) {
@@ -54,22 +58,24 @@ class Champlain::Label is Champlain::Marker {
   method new_from_file (
     Str                     $filename,
     CArray[Pointer[GError]] $error    = gerror
-  ) {
+  )
+    is also<new-from-file>
+  {
     clear_error;
-    my $label = champlain_label_new_from_file($!cl, $filename, $error);
+    my $label = champlain_label_new_from_file($filename, $error);
     set_error($error);
 
     $label ?? self.bless( :$label ) !! Nil;
   }
 
-  method new_full (Str() $text, ClutterActor() $actor) {
+  method new_full (Str() $text, ClutterActor() $actor) is also<new-full> {
     my $label = champlain_label_new_full($text, $actor);
 
     $label ?? self.bless( :$label ) !! Nil;
   }
 
-  method new_with_image (ChamplainLabel $actor) {
-    my $image = champlain_label_new_with_image($actor);
+  method new_with_image (ClutterActor() $actor) is also<new-with-image> {
+    my $label = champlain_label_new_with_image($actor);
 
     $label ?? self.bless( :$label ) !! Nil;
   }
@@ -79,7 +85,9 @@ class Champlain::Label is Champlain::Marker {
     Str()          $font,
     ClutterColor() $text_color,
     ClutterColor() $label_color
-  ) {
+  )
+    is also<new-with-text>
+  {
     my $label = champlain_label_new_with_text(
       $text,
       $font,
@@ -131,7 +139,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Type: gboolean
-  method draw-background is rw  {
+  method draw-background is rw  is also<draw_background> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -165,7 +173,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Type: gchar
-  method font-name is rw  {
+  method font-name is rw  is also<font_name> {
     my $gv = GLib::Value.new( G_TYPE_STRING );
     Proxy.new(
       FETCH => sub ($) {
@@ -205,7 +213,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Type: gboolean
-  method single-line-mode is rw  {
+  method single-line-mode is rw  is also<single_line_mode> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -239,7 +247,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Type: ClutterColor
-  method text-color (:$raw = False) is rw  {
+  method text-color (:$raw = False) is rw  is also<text_color> {
     my $gv = GLib::Value.new( Clutter::Color.get_type );
     Proxy.new(
       FETCH => sub ($) {
@@ -262,7 +270,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Type: gboolean
-  method use-markup is rw  {
+  method use-markup is rw  is also<use_markup> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -296,7 +304,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Type: PangoWrapMode
-  method wrap-mode is rw  {
+  method wrap-mode is rw  is also<wrap_mode> {
     my $gv = GLib::Value.new( GLib::Value.typeFromEnum(PangoWrapMode) );
     Proxy.new(
       FETCH => sub ($) {
@@ -312,12 +320,12 @@ class Champlain::Label is Champlain::Marker {
     );
   }
 
-  method get_alignment {
+  method get_alignment is also<get-alignment> {
     PangoAlignmentEnum( champlain_label_get_alignment($!cl) );
   }
 
   # Transfer: unknown
-  method get_attributes (:$raw = False) {
+  method get_attributes (:$raw = False) is also<get-attributes> {
     my $pal = champlain_label_get_attributes($!cl);
 
     $pal ??
@@ -327,7 +335,7 @@ class Champlain::Label is Champlain::Marker {
   }
 
   # Transfer: unknown
-  method get_color (:$raw = False) {
+  method get_color (:$raw = False) is also<get-color> {
     my $cc = champlain_label_get_color($!cl);
 
     $cc ??
@@ -336,24 +344,24 @@ class Champlain::Label is Champlain::Marker {
       Nil;
   }
 
-  method get_draw_background {
+  method get_draw_background is also<get-draw-background> {
     so champlain_label_get_draw_background($!cl);
   }
 
-  method get_draw_shadow {
+  method get_draw_shadow is also<get-draw-shadow> {
     so champlain_label_get_draw_shadow($!cl);
   }
 
-  method get_ellipsize {
+  method get_ellipsize is also<get-ellipsize> {
     PangoEllipsizeModeEnum( champlain_label_get_ellipsize($!cl) );
   }
 
-  method get_font_name {
+  method get_font_name is also<get-font-name> {
     champlain_label_get_font_name($!cl);
   }
 
   # Transfer: none;
-  method get_image (:$raw = False) {
+  method get_image (:$raw = False) is also<get-image> {
     my $ca = champlain_label_get_image($!cl);
 
     $ca ??
@@ -362,15 +370,15 @@ class Champlain::Label is Champlain::Marker {
       Nil
   }
 
-  method get_single_line_mode {
+  method get_single_line_mode is also<get-single-line-mode> {
     so champlain_label_get_single_line_mode($!cl);
   }
 
-  method get_text {
+  method get_text is also<get-text> {
     champlain_label_get_text($!cl);
   }
 
-  method get_text_color (:$raw = False) {
+  method get_text_color (:$raw = False) is also<get-text-color> {
     my $cc = champlain_label_get_text_color($!cl);
 
     $cc ??
@@ -379,7 +387,7 @@ class Champlain::Label is Champlain::Marker {
       Nil;
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -390,85 +398,85 @@ class Champlain::Label is Champlain::Marker {
     );
   }
 
-  method get_use_markup {
+  method get_use_markup is also<get-use-markup> {
     so champlain_label_get_use_markup($!cl);
   }
 
-  method get_wrap {
+  method get_wrap is also<get-wrap> {
     so champlain_label_get_wrap($!cl);
   }
 
-  method get_wrap_mode {
+  method get_wrap_mode is also<get-wrap-mode> {
     PangoWrapModeEnum( champlain_label_get_wrap_mode($!cl) );
   }
 
-  method set_alignment (Int() $alignment) {
+  method set_alignment (Int() $alignment) is also<set-alignment> {
     my PangoAlignment $a = $alignment;
 
     champlain_label_set_alignment($!cl, $a);
   }
 
-  method set_attributes (PangoAttrList() $list) {
+  method set_attributes (PangoAttrList() $list) is also<set-attributes> {
     champlain_label_set_attributes($!cl, $list);
   }
 
-  method set_color (ClutterColor() $color) {
+  method set_color (ClutterColor() $color) is also<set-color> {
     champlain_label_set_color($!cl, $color);
   }
 
-  method set_draw_background (Int() $background) {
+  method set_draw_background (Int() $background) is also<set-draw-background> {
     my gboolean $b = $background.so.Int;
 
     champlain_label_set_draw_background($!cl, $b);
   }
 
-  method set_draw_shadow (Int() $shadow) {
+  method set_draw_shadow (Int() $shadow) is also<set-draw-shadow> {
     my gboolean $s = $shadow.so.Int;
 
     champlain_label_set_draw_shadow($!cl, $s);
   }
 
-  method set_ellipsize (Int() $mode) {
+  method set_ellipsize (Int() $mode) is also<set-ellipsize> {
     my PangoEllipsizeMode $m = $mode;
 
     champlain_label_set_ellipsize($!cl, $mode);
   }
 
-  method set_font_name (Str() $font_name) {
+  method set_font_name (Str() $font_name) is also<set-font-name> {
     champlain_label_set_font_name($!cl, $font_name);
   }
 
-  method set_image (ChamplainLabel() $image) {
+  method set_image (ChamplainLabel() $image) is also<set-image> {
     champlain_label_set_image($!cl, $image);
   }
 
-  method set_single_line_mode (Int() $mode) {
+  method set_single_line_mode (Int() $mode) is also<set-single-line-mode> {
     my gboolean $m = $mode.so.Int;
 
     champlain_label_set_single_line_mode($!cl, $m);
   }
 
-  method set_text (Str() $text) {
+  method set_text (Str() $text) is also<set-text> {
     champlain_label_set_text($!cl, $text);
   }
 
-  method set_text_color (ClutterColor() $color) {
+  method set_text_color (ClutterColor() $color) is also<set-text-color> {
     champlain_label_set_text_color($!cl, $color);
   }
 
-  method set_use_markup (Int() $use_markup) {
+  method set_use_markup (Int() $use_markup) is also<set-use-markup> {
     my gboolean $u = $use_markup;
 
     champlain_label_set_use_markup($!cl, $use_markup);
   }
 
-  method set_wrap (Int() $wrap) {
+  method set_wrap (Int() $wrap) is also<set-wrap> {
     my gboolean $w = $wrap.so.Int;
 
     champlain_label_set_wrap($!cl, $w);
   }
 
-  method set_wrap_mode (Int() $wrap_mode) {
+  method set_wrap_mode (Int() $wrap_mode) is also<set-wrap-mode> {
     my PangoWrapMode $w = $wrap_mode;
 
     champlain_label_set_wrap_mode($!cl, $w);
