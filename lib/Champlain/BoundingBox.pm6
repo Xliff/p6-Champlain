@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use MONKEY-TYPING;
 
 use Champlain::Raw::Types;
@@ -36,6 +38,7 @@ augment class ChamplainBoundingBox {
   }
 
   proto method get_center (|)
+      is also<get-center>
   { * }
 
   multi method get_center {
@@ -48,7 +51,7 @@ augment class ChamplainBoundingBox {
     ($latitude, $longitude) = ($lat, $long);
   }
 
-  method get_type  {
+  method get_type  is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -59,7 +62,7 @@ augment class ChamplainBoundingBox {
     )
   }
 
-  method is_valid {
+  method is_valid is also<is-valid> {
     so champlain_bounding_box_is_valid(self);
   }
 
