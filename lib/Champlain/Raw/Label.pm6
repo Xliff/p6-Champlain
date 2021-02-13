@@ -3,8 +3,11 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use GLib::Raw::Structs;
 use Pango::Raw::Definitions;
 use Pango::Raw::Enums;
+use Clutter::Raw::Definitions;
+use Clutter::Raw::Structs;
 use Champlain::Raw::Definitions;
 
 unit package Champlain::Raw::Label;
