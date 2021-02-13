@@ -15,8 +15,8 @@ our subset ChamplainViewAncestry is export of Mu
 class Champlain::View is Clutter::Actor {
   has ChamplainView $!cv;
 
-  submethod BUILD (:$marker) {
-    self.setChamplainView($marker) if $marker;
+  submethod BUILD (:$view) {
+    self.setChamplainView($view) if $view;
   }
 
   method setChamplainView(ChamplainViewAncestry $_) {
@@ -39,10 +39,10 @@ class Champlain::View is Clutter::Actor {
   method Champlain::Raw::Definitions::ChamplainView
   { $!cv }
 
-  multi method new (ChamplainViewAncestry $marker, :$ref = True) {
-    return Nil unless $marker;
+  multi method new (ChamplainViewAncestry $view, :$ref = True) {
+    return Nil unless $view;
 
-    my $o = self.bless( :$marker );
+    my $o = self.bless( :$view );
     $o.ref if $ref;
     $o;
   }
