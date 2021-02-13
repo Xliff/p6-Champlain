@@ -9,7 +9,7 @@ our subset ChamplainPointAncestry is export of Mu
   where ChamplainPoint | ChamplainMarkerAncestry;
 
 class Champlain::Point is Champlain::Marker {
-  has ChamplainPoint $!cp;
+  has ChamplainPoint $!cp is implementor;
 
   submethod BUILD (:$point) {
     self.setChamplainPoint($point) if $point;

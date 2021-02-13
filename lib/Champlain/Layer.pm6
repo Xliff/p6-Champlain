@@ -11,7 +11,7 @@ our subset ChamplainLayerAncestry is export of Mu
   where ChamplainLayer | ClutterActorAncestry;
 
 class Champlain::Layer is Clutter::Actor {
-  has ChamplainLayer $!cl;
+  has ChamplainLayer $!cl is implementor;
 
   submethod BUILD (:$layer) {
     self.setChamplainLayer($layer) if $layer;

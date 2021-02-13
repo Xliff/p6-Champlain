@@ -14,7 +14,7 @@ class Champlain::Coordinate {
   also does GLib::Roles::Object;
   also does Champlain::Roles::Location;
 
-  has ChamplainCoordinate $!cc;
+  has ChamplainCoordinate $!cc is implementor;
 
   submethod BUILD (:$coord) {
     self.setChamplainCoordinate($coord) if $coord;

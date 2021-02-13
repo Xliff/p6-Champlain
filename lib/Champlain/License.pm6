@@ -10,7 +10,7 @@ our subset ChamplainLicenseAncestry is export of Mu
   where ChamplainLicense | ClutterActorAncestry;
 
 class Champlain::License is Clutter::Actor {
-  has ChamplainLicense $!cl;
+  has ChamplainLicense $!cl is implementor;
 
   submethod BUILD (:$license) {
     self.setChamplainLicense($license) if $license;

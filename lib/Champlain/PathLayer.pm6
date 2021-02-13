@@ -9,13 +9,14 @@ use GLib::GList;
 use Clutter::Color;
 use Champlain::Layer;
 
+use GLib::Roles::ListData;
 use Champlain::Roles::Location;
 
 our subset ChamplainPathLayerAncestry is export of Mu
   where ChamplainPathLayer | ChamplainLayerAncestry;
 
 class Champlain::PathLayer is Champlain::Layer {
-  has ChamplainPathLayer $!cpl;
+  has ChamplainPathLayer $!cpl is implementor;
 
   submethod BUILD (:$path-layer) {
     self.setChamplainPathLayer($path-layer) if $path-layer;
@@ -282,7 +283,25 @@ class Champlain::PathLayer is Champlain::Layer {
     champlain_path_layer_set_closed($!cpl, $value);
   }
 
-  method set_dash (GList() $dash_pattern) is also<set-dash> {
+  proto method set_dash (|)
+    is also<set-dash>
+  { * }
+
+  multi method set_dash (*@dash-pattern where *.elems > 1) {
+    die 'Parameters to .set-dash() must be integers!'
+      unless @dash-pattern.all ~~ Int;
+    samewith(@dash-pattern);
+  }
+  multi method set_dash (@dash-pattern) {
+    die 'Parameters to .set-dash() must be integers!'
+      unless @dash-pattern.all ~~ Int;
+    samewith( GLib::GList.new(@dash-pattern)  );
+  }
+  multi method set_dash (GList() $dash_pattern) {
+    my $d = GLib::GList.new($dash_pattern) but GLib::Roles::ListData[uint32];
+    +$dash_pattern.data.say;
+    +$dash_pattern.next.data.say;
+    $d.Array.gist.say;
     champlain_path_layer_set_dash($!cpl, $dash_pattern);
   }
 

@@ -11,7 +11,7 @@ our subset ChamplainMapSourceAncestry is export of Mu
 class Champlain::MapSource {
   also does GLib::Roles::Object;
 
-  has ChamplainMapSource $!cms;
+  has ChamplainMapSource $!cms is implementor;
 
   submethod BUILD (:$map-source) {
     self.setChamplainMapSource($map-source) if $map-source;

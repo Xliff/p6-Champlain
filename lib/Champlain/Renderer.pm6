@@ -10,7 +10,7 @@ use GLib::Roles::Object;
 class Champlain::Renderer {
   also does GLib::Roles::Object;
 
-  has ChamplainRenderer $!cr;
+  has ChamplainRenderer $!cr is implementor;
 
   method get_type {
     state ($n, $t);

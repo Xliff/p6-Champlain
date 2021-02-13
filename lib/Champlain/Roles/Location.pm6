@@ -13,6 +13,9 @@ role Champlain::Roles::Location {
     $!cl = cast( ChamplainLocation, i.get_value(self) );
   }
 
+  method Champlain::Raw::Definitions::ChamplainLocation
+  { $!cl }
+
   method get_latitude {
     champlain_location_get_latitude($!cl);
   }
@@ -36,6 +39,46 @@ role Champlain::Roles::Location {
     my Num ($lat, $long) = ($latitude, $longitude);
 
     champlain_location_set_location($!cl, $lat, $long);
+  }
+
+}
+
+use GLib::Roles::Object;
+
+our subset ChamplainLocationAncestry is export of Mu
+  where ChamplainLocation | GObject;
+
+class Champlain::Location {
+  also does GLib::Roles::Object;
+  also does Champlain::Roles::Location;
+
+  submethod BUILD (:$location) {
+    self.setChamplainLocation($location) if $location;
+  }
+
+  method setChamplainLocation (ChamplainLocationAncestry $_) {
+    my $to-parent;
+
+    $!cl = do {
+      when ChamplainLocation {
+        $to-parent = cast(GObject, $_);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(ChamplainLocation, $_);
+      }
+    }
+    self!setObject($to-parent);
+  }
+
+  method new (ChamplainLocationAncestry $location, :$ref = True) {
+    return Nil unless $location;
+
+    my $o = self.bless( :$location );
+    $o.ref if $ref;
+    $o;
   }
 
 }

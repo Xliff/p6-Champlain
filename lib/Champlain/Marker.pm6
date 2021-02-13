@@ -14,7 +14,7 @@ our subset ChamplainMarkerAncestry is export of Mu
 class Champlain::Marker is Clutter::Actor {
   also does Champlain::Roles::Location;
 
-  has ChamplainMarker $!cm;
+  has ChamplainMarker $!cm is implementor;
 
   submethod BUILD (:$marker) {
     self.setChamplainMarker($marker) if $marker;

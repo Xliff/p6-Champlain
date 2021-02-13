@@ -12,7 +12,7 @@ our subset ChamplainMarkerLayerAncestry is export
   when ChamplainMarkerLayer | ChamplainLayerAncestry;
 
 class Champlain::MarkerLayer is Champlain::Layer {
-  has ChamplainMarkerLayer $!cml;
+  has ChamplainMarkerLayer $!cml is implementor;
 
   submethod BUILD (:$marker-layer) {
     self.setChamplainMarkerLayer($marker-layer) if $marker-layer;

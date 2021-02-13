@@ -13,7 +13,7 @@ our subset ChamplainViewAncestry is export of Mu
   where ChamplainView | ClutterActorAncestry;
 
 class Champlain::View is Clutter::Actor {
-  has ChamplainView $!cv;
+  has ChamplainView $!cv is implementor;
 
   submethod BUILD (:$view) {
     self.setChamplainView($view) if $view;

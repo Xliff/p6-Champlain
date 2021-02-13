@@ -12,7 +12,7 @@ our subset ChamplainLabelAncestry is export of Mu
   where ChamplainLabel | ChamplainMarkerAncestry;
 
 class Champlain::Label is Champlain::Marker {
-  has ChamplainLabel $!cl;
+  has ChamplainLabel $!cl is implementor;
 
   submethod BUILD (:$marker) {
     self.setChamplainLabel($marker) if $marker;
