@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::View;
 
@@ -37,6 +39,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   method Champlain::Raw::Definitions::ChamplainView
+    is also<ChamplainView>
   { $!cv }
 
   multi method new (ChamplainViewAncestry $view, :$ref = True) {
@@ -53,7 +56,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: gboolean
-  method animate-zoom is rw  {
+  method animate-zoom is rw  is also<animate_zoom> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -70,7 +73,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: ClutterActor
-  method background-pattern (:$raw = False) is rw  {
+  method background-pattern (:$raw = False) is rw  is also<background_pattern> {
     my $gv = GLib::Value.new( Clutter::Actor.get_type );
     Proxy.new(
       FETCH => sub ($) {
@@ -110,7 +113,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: guint
-  method goto-animation-duration is rw  {
+  method goto-animation-duration is rw  is also<goto_animation_duration> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -127,7 +130,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: ClutterAnimationMode
-  method goto-animation-mode is rw  {
+  method goto-animation-mode is rw  is also<goto_animation_mode> {
     my $gv = GLib::Value.new( GLib::Value.typeFromEnum(ClutterAnimationMode) );
     Proxy.new(
       FETCH => sub ($) {
@@ -146,7 +149,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: gboolean
-  method keep-center-on-resize is rw  {
+  method keep-center-on-resize is rw  is also<keep_center_on_resize> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -163,7 +166,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: gboolean
-  method kinetic-mode is rw  {
+  method kinetic-mode is rw  is also<kinetic_mode> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -214,7 +217,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: ChamplainMapSource
-  method map-source (:$raw = False) is rw  {
+  method map-source (:$raw = False) is rw  is also<map_source> {
     my $gv = GLib::Value.new( Champlain::MapSource.get_type );
     Proxy.new(
       FETCH => sub ($) {
@@ -237,7 +240,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: guint
-  method max-zoom-level is rw  {
+  method max-zoom-level is rw  is also<max_zoom_level> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -254,7 +257,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: guint
-  method min-zoom-level is rw  {
+  method min-zoom-level is rw  is also<min_zoom_level> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -287,7 +290,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: guint
-  method zoom-level is rw  {
+  method zoom-level is rw  is also<zoom_level> {
     my $gv = GLib::Value.new( G_TYPE_UINT );
     Proxy.new(
       FETCH => sub ($) {
@@ -304,7 +307,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Type: gboolean
-  method zoom-on-double-click is rw  {
+  method zoom-on-double-click is rw  is also<zoom_on_double_click> {
     my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => sub ($) {
@@ -322,24 +325,24 @@ class Champlain::View is Clutter::Actor {
 
   # Is originally:
   # ChamplainView, gpointer --> void
-  method animation-completed {
+  method animation-completed is also<animation_completed> {
     self.connect($!cv, 'animation-completed');
   }
 
   # Is originally:
   # ChamplainView, gpointer --> void
-  method layer-relocated {
+  method layer-relocated is also<layer_relocated> {
     self.connect($!cv, 'layer-relocated');
   }
 
-  method add_layer (ChamplainLayer() $layer) {
+  method add_layer (ChamplainLayer() $layer) is also<add-layer> {
     champlain_view_add_layer($!cv, $layer);
   }
 
   method add_overlay_source (
     ChamplainMapSource() $map_source,
     Int()                $opacity
-  ) {
+  ) is also<add-overlay-source> {
     my guint8 $o = $opacity;
 
     champlain_view_add_overlay_source($!cv, $map_source, $o);
@@ -349,36 +352,36 @@ class Champlain::View is Clutter::Actor {
     ClutterActor() $child,
     Int()          $x_align,
     Int()          $y_align
-  ) {
+  ) is also<bin-layout-add> {
     my ClutterBinAlignment ($xa, $ya) = ($x_align, $y_align);
 
     champlain_view_bin_layout_add($!cv, $child, $xa, $ya);
   }
 
-  method center_on (Num() $latitude, Num() $longitude) {
+  method center_on (Num() $latitude, Num() $longitude) is also<center-on> {
     my gdouble ($lat, $long) = ($latitude, $longitude);
 
     champlain_view_center_on($!cv, $lat, $long);
   }
 
-  method ensure_layers_visible (Int() $animate) {
+  method ensure_layers_visible (Int() $animate) is also<ensure-layers-visible> {
     my gboolean $a = $animate.so.Int;
 
     champlain_view_ensure_layers_visible($!cv, $a);
   }
 
-  method ensure_visible (ChamplainBoundingBox $bbox, Int() $animate) {
+  method ensure_visible (ChamplainBoundingBox $bbox, Int() $animate) is also<ensure-visible> {
     my gboolean $a = $animate.so.Int;
 
     champlain_view_ensure_visible($!cv, $bbox, $a);
   }
 
-  method get_animate_zoom {
+  method get_animate_zoom is also<get-animate-zoom> {
     so champlain_view_get_animate_zoom($!cv);
   }
 
   # Transfer: none
-  method get_background_pattern (:$raw = False) {
+  method get_background_pattern (:$raw = False) is also<get-background-pattern> {
     my $cc = champlain_view_get_background_pattern($!cv);
 
     $cc ??
@@ -387,42 +390,42 @@ class Champlain::View is Clutter::Actor {
       Nil
   }
 
-  method get_bounding_box {
+  method get_bounding_box is also<get-bounding-box> {
     champlain_view_get_bounding_box($!cv);
   }
 
-  method get_bounding_box_for_zoom_level (Int() $zoom_level) {
+  method get_bounding_box_for_zoom_level (Int() $zoom_level) is also<get-bounding-box-for-zoom-level> {
     my guint $z = $zoom_level;
 
     champlain_view_get_bounding_box_for_zoom_level($!cv, $z);
   }
 
-  method get_center_latitude {
+  method get_center_latitude is also<get-center-latitude> {
     champlain_view_get_center_latitude($!cv);
   }
 
-  method get_center_longitude {
+  method get_center_longitude is also<get-center-longitude> {
     champlain_view_get_center_longitude($!cv);
   }
 
-  method get_deceleration {
+  method get_deceleration is also<get-deceleration> {
     champlain_view_get_deceleration($!cv);
   }
 
-  method get_horizontal_wrap {
+  method get_horizontal_wrap is also<get-horizontal-wrap> {
     so champlain_view_get_horizontal_wrap($!cv);
   }
 
-  method get_keep_center_on_resize {
+  method get_keep_center_on_resize is also<get-keep-center-on-resize> {
     so champlain_view_get_keep_center_on_resize($!cv);
   }
 
-  method get_kinetic_mode {
+  method get_kinetic_mode is also<get-kinetic-mode> {
     so champlain_view_get_kinetic_mode($!cv);
   }
 
   # Transfer: none
-  method get_license_actor (:$raw = False) {
+  method get_license_actor (:$raw = False) is also<get-license-actor> {
     my $l = champlain_view_get_license_actor($!cv);
 
     $l ??
@@ -432,7 +435,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Transfer: none
-  method get_map_source (:$raw = False) {
+  method get_map_source (:$raw = False) is also<get-map-source> {
     my $ms = champlain_view_get_map_source($!cv);
 
     $ms ??
@@ -441,15 +444,15 @@ class Champlain::View is Clutter::Actor {
       Nil;
   }
 
-  method get_max_zoom_level {
+  method get_max_zoom_level is also<get-max-zoom-level> {
     champlain_view_get_max_zoom_level($!cv);
   }
 
-  method get_min_zoom_level {
+  method get_min_zoom_level is also<get-min-zoom-level> {
     champlain_view_get_min_zoom_level($!cv);
   }
 
-  method get_overlay_sources (:$glist = False, :$raw = False) {
+  method get_overlay_sources (:$glist = False, :$raw = False) is also<get-overlay-sources> {
     returnGList(
       champlain_view_get_overlay_sources($!cv),
       $glist,
@@ -459,11 +462,11 @@ class Champlain::View is Clutter::Actor {
     );
   }
 
-  method get_state {
+  method get_state is also<get-state> {
     ChamplainStateEnum( champlain_view_get_state($!cv) );
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -475,6 +478,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   proto method get_viewport_anchor (|)
+      is also<get-viewport-anchor>
   { * }
 
   multi method get_viewport_anchor {
@@ -488,6 +492,7 @@ class Champlain::View is Clutter::Actor {
   }
 
   proto method get_viewport_origin (|)
+      is also<get-viewport-origin>
   { * }
 
   multi method get_viewport_origin {
@@ -500,141 +505,141 @@ class Champlain::View is Clutter::Actor {
     ($x, $y) = ($xx, $yy);
   }
 
-  method get_world {
+  method get_world is also<get-world> {
     champlain_view_get_world($!cv);
   }
 
-  method get_zoom_level {
+  method get_zoom_level is also<get-zoom-level> {
     champlain_view_get_zoom_level($!cv);
   }
 
-  method get_zoom_on_double_click {
+  method get_zoom_on_double_click is also<get-zoom-on-double-click> {
     so champlain_view_get_zoom_on_double_click($!cv);
   }
 
-  method go_to (Num() $latitude, Num() $longitude) {
+  method go_to (Num() $latitude, Num() $longitude) is also<go-to> {
     my gdouble ($lat, $long) = ($latitude, $longitude);
 
     champlain_view_go_to($!cv, $lat, $long);
   }
 
-  method latitude_to_y (Num() $latitude) {
+  method latitude_to_y (Num() $latitude) is also<latitude-to-y> {
     my gdouble $l = $latitude;
 
     champlain_view_latitude_to_y($!cv, $l);
   }
 
-  method longitude_to_x (Num() $longitude) {
+  method longitude_to_x (Num() $longitude) is also<longitude-to-x> {
     my gdouble $l = $longitude;
 
     champlain_view_longitude_to_x($!cv, $l);
   }
 
-  method reload_tiles {
+  method reload_tiles is also<reload-tiles> {
     champlain_view_reload_tiles($!cv);
   }
 
-  method remove_layer (ChamplainLayer() $layer) {
+  method remove_layer (ChamplainLayer() $layer) is also<remove-layer> {
     champlain_view_remove_layer($!cv, $layer);
   }
 
-  method remove_overlay_source (ChamplainMapSource() $map_source) {
+  method remove_overlay_source (ChamplainMapSource() $map_source) is also<remove-overlay-source> {
     champlain_view_remove_overlay_source($!cv, $map_source);
   }
 
-  method set_animate_zoom (Int() $value) {
+  method set_animate_zoom (Int() $value) is also<set-animate-zoom> {
     my gboolean $v = $value.so.Int;
 
     champlain_view_set_animate_zoom($!cv, $v);
   }
 
-  method set_background_pattern (ClutterContent() $background) {
+  method set_background_pattern (ClutterContent() $background) is also<set-background-pattern> {
     champlain_view_set_background_pattern($!cv, $background);
   }
 
-  method set_deceleration (Num() $rate) {
+  method set_deceleration (Num() $rate) is also<set-deceleration> {
     my gdouble $r = $rate;
 
     champlain_view_set_deceleration($!cv, $r);
   }
 
-  method set_horizontal_wrap (Int() $wrap) {
+  method set_horizontal_wrap (Int() $wrap) is also<set-horizontal-wrap> {
     my gboolean $w = $wrap.so.Int;
 
     champlain_view_set_horizontal_wrap($!cv, $w);
   }
 
-  method set_keep_center_on_resize (Int() $value) {
+  method set_keep_center_on_resize (Int() $value) is also<set-keep-center-on-resize> {
     my gboolean $v = $value.so.Int;
 
     champlain_view_set_keep_center_on_resize($!cv, $v);
   }
 
-  method set_kinetic_mode (Int() $kinetic) {
+  method set_kinetic_mode (Int() $kinetic) is also<set-kinetic-mode> {
     my gboolean $k = $kinetic.so.Int;
 
     champlain_view_set_kinetic_mode($!cv, $k);
   }
 
-  method set_map_source (ChamplainMapSource() $map_source) {
+  method set_map_source (ChamplainMapSource() $map_source) is also<set-map-source> {
     champlain_view_set_map_source($!cv, $map_source);
   }
 
-  method set_max_zoom_level (Int() $zoom_level) {
+  method set_max_zoom_level (Int() $zoom_level) is also<set-max-zoom-level> {
     my guint $z = $zoom_level;
 
     champlain_view_set_max_zoom_level($!cv, $z);
   }
 
-  method set_min_zoom_level (Int() $zoom_level) {
+  method set_min_zoom_level (Int() $zoom_level) is also<set-min-zoom-level> {
     my guint $z = $zoom_level;
 
     champlain_view_set_min_zoom_level($!cv, $z);
   }
 
-  method set_world (ChamplainBoundingBox $bbox) {
+  method set_world (ChamplainBoundingBox $bbox) is also<set-world> {
     champlain_view_set_world($!cv, $bbox);
   }
 
-  method set_zoom_level (Int() $zoom_level) {
+  method set_zoom_level (Int() $zoom_level) is also<set-zoom-level> {
     my guint $z = $zoom_level;
 
     champlain_view_set_zoom_level($!cv, $z);
   }
 
-  method set_zoom_on_double_click (Num() $value) {
+  method set_zoom_on_double_click (Num() $value) is also<set-zoom-on-double-click> {
     my gboolean $v = $value.so.Int;
 
     champlain_view_set_zoom_on_double_click($!cv, $v);
   }
 
-  method stop_go_to {
+  method stop_go_to is also<stop-go-to> {
     champlain_view_stop_go_to($!cv);
   }
 
-  method to_surface (Int() $include_layers) {
+  method to_surface (Int() $include_layers) is also<to-surface> {
     my gboolean $i = $include_layers.so.Int;
 
     champlain_view_to_surface($!cv, $i);
   }
 
-  method x_to_longitude (Num() $x) {
+  method x_to_longitude (Num() $x) is also<x-to-longitude> {
     my gdouble $xx = $x;
 
     champlain_view_x_to_longitude($!cv, $xx);
   }
 
-  method y_to_latitude (Num() $y) {
+  method y_to_latitude (Num() $y) is also<y-to-latitude> {
     my gdouble $yy = $y;
 
     champlain_view_y_to_latitude($!cv, $yy);
   }
 
-  method zoom_in {
+  method zoom_in is also<zoom-in> {
     champlain_view_zoom_in($!cv);
   }
 
-  method zoom_out {
+  method zoom_out is also<zoom-out> {
     champlain_view_zoom_out($!cv);
   }
 
