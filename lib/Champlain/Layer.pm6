@@ -1,6 +1,7 @@
 use v6.c;
 
 use Method::Also;
+
 use NativeCall;
 
 use Champlain::Raw::Types;
@@ -46,11 +47,11 @@ class Champlain::Layer is Clutter::Actor {
     $o;
   }
 
-  method get_bounding_box {
+  method get_bounding_box is also<get-bounding-box> {
     champlain_layer_get_bounding_box($!cl);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -61,7 +62,7 @@ class Champlain::Layer is Clutter::Actor {
     );
   }
 
-  method set_view (ChamplainView $view) {
+  method set_view (ChamplainView $view) is also<set-view> {
     champlain_layer_set_view($!cl, $view);
   }
 
