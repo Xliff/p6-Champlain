@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use NativeCall;
 
 use Champlain::Raw::Types;
@@ -39,6 +41,7 @@ class Champlain::Coordinate {
   }
 
   method Champlain::Raw::Definitions::ChamplainCoordinate
+    is also<ChamplainCoordinate>
   { $!cc }
 
   multi method new (ChamplainCoordinateAncestry $coord, :$ref = True) {
@@ -54,14 +57,14 @@ class Champlain::Coordinate {
     $coord ?? self.bless( :$coord ) !! Nil;
   }
 
-  method new_full (Num() $latitude, Num() $longitude) {
+  method new_full (Num() $latitude, Num() $longitude) is also<new-full> {
     my gdouble ($lat, $long) = ($latitude, $longitude);
 
     my $coord = champlain_coordinate_new_full($lat, $long);
     $coord ?? self.bless( :$coord ) !! Nil;
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
