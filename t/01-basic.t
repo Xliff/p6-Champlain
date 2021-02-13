@@ -5,7 +5,7 @@ use Clutter::Stage;
 use Champlain::View;
 
 sub MAIN {
-  exit(1) unless Clutter::Main.init;
+  exit(1) unless Clutter::Main.init == CLUTTER_INIT_SUCCESS;
 
   my $stage = Clutter::Stage.new;
   $stage.destroy.tap({ Clutter::Main.quit });
