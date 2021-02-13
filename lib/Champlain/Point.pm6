@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 use Champlain::Raw::Point;
 
@@ -33,6 +35,7 @@ class Champlain::Point is Champlain::Marker {
   }
 
   method Champlain::Raw::Definitions::ChamplainPoint
+    is also<ChamplainPoint>
   { $!cp }
 
   multi method new (ChamplainPointAncestry $point, :$ref = True) {
@@ -48,7 +51,7 @@ class Champlain::Point is Champlain::Marker {
     $point ?? self.bless( :$point ) !! Nil;
   }
 
-  method new_full (Num() $size, ClutterColor() $color) {
+  method new_full (Num() $size, ClutterColor() $color) is also<new-full> {
     my gdouble $s = $size;
 
     champlain_point_new_full($!cp, $size, $color);
@@ -94,7 +97,7 @@ class Champlain::Point is Champlain::Marker {
     );
   }
 
-  method get_color (:$raw = False) {
+  method get_color (:$raw = False) is also<get-color> {
     my $cc = champlain_point_get_color($!cp);
 
     $cc ??
@@ -103,11 +106,11 @@ class Champlain::Point is Champlain::Marker {
       Nil;
   }
 
-  method get_size {
+  method get_size is also<get-size> {
     champlain_point_get_size($!cp);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -118,11 +121,11 @@ class Champlain::Point is Champlain::Marker {
     );
   }
 
-  method set_color (ClutterColor() $color) {
+  method set_color (ClutterColor() $color) is also<set-color> {
     champlain_point_set_color($!cp, $color);
   }
 
-  method set_size (Num() $size) {
+  method set_size (Num() $size) is also<set-size> {
     my gdouble $s = $size;
 
     champlain_point_set_size($!cp, $s);
