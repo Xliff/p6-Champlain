@@ -86,11 +86,6 @@ sub onImageDownloaded ($session, $message, $data) {
         if $ERROR.not {
           $marker = Champlain::Label.new-with-image($texture);
           $marker.set_location($data<latitude>, $data<longitude>);
-          champlain_location_set_location(
-            $marker.ChamplainLocation,
-            $data<latitude>.Num,
-            $data<longitude>.Num
-          );
           $data<layer>.add-marker($marker);
         } else {
           say "Failed to convert { $url } into a texture: { $ERROR.message }";
