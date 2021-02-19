@@ -10,6 +10,13 @@ use Clutter::Color;
 
 use Champlain::Roles::Location;
 
+my @attributes  = <draggable selectable selected>;
+my @set-methods = <
+  location
+  selection_color         selection-color
+  selection_text_color    selction-text-color
+>;
+
 our subset ChamplainMarkerAncestry is export of Mu
   where ChamplainMarker | ClutterActorAncestry;
 
@@ -55,6 +62,28 @@ class Champlain::Marker is Clutter::Actor {
     my $marker = champlain_marker_new();
 
     $marker ?? self.bless( :$marker ) !! Nil;
+  }
+
+  method setup(*%data) {
+    for %data.keys -> $_ is copy {
+
+      when @attributes.any  {
+        my $proper-name = S:g/'-'/_/;
+        say "CMAA: {$_}" if $DEBUG;
+        self."$proper-name"() = %data{$_};
+        %data{$_}:delete;
+      }
+
+      when @set-methods.any {
+        my $proper-name = S:g/'-'/_/;
+        say "CMSM: {$_}" if $DEBUG;
+        self."set_{ $proper-name }"( |%data{$_} );
+        %data{$_}:delete
+      }
+
+    }
+    # Not as clean as I like it, but it solves problems nextwith does NOT.
+    self.Clutter::Actor::setup(|%data) if %data.keys;
   }
 
   # Type: gboolean
