@@ -1,0 +1,11 @@
+t/05-animated-marker.t
+----------------------
+
+2021-09-18
+==========
+  - Invisible marker, possibly due to invalid content attribute or unexplained
+    Cairo misstep
+
+  - SEVG some 12 frames into execution
+
+As of 2021-09-19, all of the above issues have been fixed
