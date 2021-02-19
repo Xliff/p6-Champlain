@@ -5,51 +5,51 @@ use Method::Also;
 use NativeCall;
 
 use Champlain::Raw::Types;
-use Champlain::Raw::NetworkBBoxTileSource;
+use Champlain::Raw::NetworkBboxTileSource;
 
 use Champlain::TileSource;
 
-our subset ChamplainNetworkBBoxTileSourceAncestry is export of Mu
-  where ChamplainNetworkBBoxTileSource | ChamplainTileSourceAncestry;
+our subset ChamplainNetworkBboxTileSourceAncestry is export of Mu
+  where ChamplainNetworkBboxTileSource | ChamplainTileSourceAncestry;
 
-class Champlain::NetworkBBoxTileSource is Champlain::TileSource {
-  has ChamplainNetworkBBoxTileSource $!cnbts;
+class Champlain::NetworkBboxTileSource is Champlain::TileSource {
+  has ChamplainNetworkBboxTileSource $!cnbts;
 
-  submethod BUILD (:$bbox-tile-source) {
-    self.setChamplainNetworkBBoxTileSource($bbox-tile-source)
-      if $bbox-tile-source;
+  submethod BUILD (:$Bbox-tile-source) {
+    self.setChamplainNetworkBboxTileSource($Bbox-tile-source)
+      if $Bbox-tile-source;
   }
 
-  method setChamplainNetworkBBoxTileSource(
-    ChamplainNetworkBBoxTileSourceAncestry $_
+  method setChamplainNetworkBboxTileSource(
+    ChamplainNetworkBboxTileSourceAncestry $_
   ) {
     my $to-parent;
 
     $!cnbts = do {
-      when ChamplainNetworkBBoxTileSource {
+      when ChamplainNetworkBboxTileSource {
         $to-parent = cast(ChamplainTileSource, $_);
         $_;
       }
 
       default {
         $to-parent = $_;
-        cast(ChamplainNetworkBBoxTileSource, $_);
+        cast(ChamplainNetworkBboxTileSource, $_);
       }
     }
     self.setChamplainTileSource($to-parent);
   }
 
-  method Champlain::Raw::Definitions::ChamplainNetworkBBoxTileSource
-    is also<ChamplainNetworkBBoxTileSource>
+  method Champlain::Raw::Definitions::ChamplainNetworkBboxTileSource
+    is also<ChamplainNetworkBboxTileSource>
   { $!cnbts }
 
   method new (
-    ChamplainNetworkBBoxTileSourceAncestry $bbox-tile-source,
+    ChamplainNetworkBboxTileSourceAncestry $Bbox-tile-source,
                                            :$ref             = True
   ) {
-    return Nil unless $bbox-tile-source;
+    return Nil unless $Bbox-tile-source;
 
-    my $o = self.bless( :$bbox-tile-source );
+    my $o = self.bless( :$Bbox-tile-source );
     $o.ref if $ref;
     $o;
   }
@@ -68,7 +68,7 @@ class Champlain::NetworkBBoxTileSource is Champlain::TileSource {
     my ChamplainMapProjection $p = $projection;
 
     my guint($mnz, $mxz, $ts) = ($min_zoom, $max_zoom, $tile_size);
-    my $bbox-tile-source = champlain_network_bbox_tile_source_new_full(
+    my $Bbox-tile-source = champlain_network_Bbox_tile_source_new_full(
       $id,
       $name,
       $license,
@@ -80,11 +80,11 @@ class Champlain::NetworkBBoxTileSource is Champlain::TileSource {
       $renderer
     );
 
-    $bbox-tile-source ?? self.bless( :$bbox-tile-source ) !! Nil;
+    $Bbox-tile-source ?? self.bless( :$Bbox-tile-source ) !! Nil;
   }
 
   method load_map_data (Str() $map_path) {
-    champlain_network_bbox_tile_source_load_map_data($!cnbts, $map_path);
+    champlain_network_Bbox_tile_source_load_map_data($!cnbts, $map_path);
   }
 
   method get_type is also<get-type> {
@@ -92,7 +92,7 @@ class Champlain::NetworkBBoxTileSource is Champlain::TileSource {
 
     unstable_get_type(
       self.^name,
-      &champlain_network_bbox_tile_source_get_type,
+      &champlain_network_Bbox_tile_source_get_type,
       $n,
       $t
     );
