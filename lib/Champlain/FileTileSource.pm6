@@ -12,7 +12,7 @@ our subset ChamplainFileTileSourceAncestry is export of Mu
   where ChamplainFileTileSource | ChamplainTileSourceAncestry;
 
 class Champlain::FileTileSource is Champlain::TileSource {
-  has ChamplainFileTileSource $!cnts;
+  has ChamplainFileTileSource $!cfts;
 
   submethod BUILD (:$file-tile-source) {
     self.setChamplainFileTileSource($file-tile-source) if $file-tile-source;
@@ -21,7 +21,7 @@ class Champlain::FileTileSource is Champlain::TileSource {
   method setChamplainFileTileSource(ChamplainFileTileSourceAncestry $_) {
     my $to-parent;
 
-    $!cnts = do {
+    $!cfts = do {
       when ChamplainFileTileSource {
         $to-parent = cast(ChamplainTileSource, $_);
         $_;
@@ -37,7 +37,7 @@ class Champlain::FileTileSource is Champlain::TileSource {
 
   method Champlain::Raw::Definitions::ChamplainFileTileSource
     is also<ChamplainFileTileSource>
-  { $!cnts }
+  { $!cfts }
 
   method new (ChamplainFileTileSourceAncestry $file-tile-source, :$ref = True) {
     return Nil unless $file-tile-source;
@@ -64,7 +64,7 @@ class Champlain::FileTileSource is Champlain::TileSource {
 ) {
     my ChamplainMapProjection $p = $projection;
 
-    my guint($mnz, $mxz, $ts) = ($min_zoom, $max_zoom, $tile_size);
+    my guint ($mnz, $mxz, $ts) = ($min_zoom, $max_zoom, $tile_size);
     my $file-tile-source = champlain_file_tile_source_new_full(
       $id,
       $name,
