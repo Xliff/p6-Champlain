@@ -13,21 +13,22 @@ constant forced = 0;
 
 constant champlain is export = 'champlain-0.12',v0;
 
-class ChamplainCoordinate  is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainLabel       is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainLayer       is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainLicense     is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainLocation    is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainMapSource   is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainMarker      is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainMarkerLayer is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainPathLayer   is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainPoint       is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainRenderer    is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainTile        is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainTileCache   is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainTileSource  is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainView        is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainCoordinate        is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainLabel             is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainLayer             is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainLicense           is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainLocation          is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMapSource         is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMarker            is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMarkerLayer       is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainNetworkTileSource is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainPathLayer         is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainPoint             is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainRenderer          is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainTile              is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainTileCache         is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainTileSource        is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainView              is repr<CPointer> is export does GLib::Roles::Pointers { }
 
 constant ChamplainMapProjection is export := guint32;
 our enum ChamplainMapProjectionEnum is export <
