@@ -7,6 +7,9 @@ use Champlain::Raw::Point;
 
 use Champlain::Marker;
 
+my @attributes = <color size>;
+my @set-methods = 'location'.Array;
+
 our subset ChamplainPointAncestry is export of Mu
   where ChamplainPoint | ChamplainMarkerAncestry;
 
@@ -22,7 +25,7 @@ class Champlain::Point is Champlain::Marker {
 
     $!cp = do {
       when ChamplainPoint {
-        $to-parent = cast(ChamplainPoint, $_);
+        $to-parent = cast(ChamplainMarker, $_);
         $_;
       }
 
@@ -31,7 +34,7 @@ class Champlain::Point is Champlain::Marker {
         cast(ChamplainPoint, $_);
       }
     }
-    self.setChamplainPoint($to-parent);
+    self.setChamplainMarker($to-parent);
   }
 
   method Champlain::Raw::Definitions::ChamplainPoint
@@ -55,6 +58,29 @@ class Champlain::Point is Champlain::Marker {
     my gdouble $s = $size;
 
     champlain_point_new_full($!cp, $size, $color);
+  }
+
+  method setup(*%data) {
+    for %data.keys -> $_ is copy {
+
+      when @attributes.any  {
+        my $proper-name = S:g/'-'/_/;
+        say "CPAA: {$_}" if $DEBUG;
+        self."$proper-name"() = %data{$_};
+        %data{$_}:delete;
+      }
+
+      when @set-methods.any {
+        my $proper-name = S:g/'-'/_/;
+        say "CPSM: {$_}" if $DEBUG;
+        self."set_{ $proper-name }"( |%data{$_} );
+        %data{$_}:delete
+      }
+
+    }
+    # Not as clean as I like it, but it solves problems nextwith does NOT.
+    self.Champlain::Marker:setup(|%data) if %data.keys;
+    self;
   }
 
   # Type: ClutterColor
