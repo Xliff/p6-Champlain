@@ -208,14 +208,18 @@ class Champlain::Marker is Clutter::Actor {
   method set_selection_color (
     Champlain::Marker:U:
     ClutterColor() $color
-  ) is also<set-selection-color> {
+  )
+    is also<set-selection-color>
+  {
     champlain_marker_set_selection_color($color);
   }
 
   method set_selection_text_color (
     Champlain::Marker:U:
     ClutterColor() $color
-  ) is also<set-selection-text-color> {
+  )
+    is also<set-selection-text-color>
+  {
     champlain_marker_set_selection_text_color($color);
   }
 }
