@@ -1,5 +1,7 @@
 use v6.c;
 
+use Champlain::Raw::Types;
+
 use Clutter::Actor;
 use Clutter::Color;
 use Clutter::Main;
