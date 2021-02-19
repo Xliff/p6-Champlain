@@ -21,5 +21,6 @@ c-helpers/time
 core
 *.imp-bak
 *.ref-bak
+*.alias-bak
 *.old
 BuildList
