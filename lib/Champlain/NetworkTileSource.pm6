@@ -39,6 +39,17 @@ class Champlain::NetworkTileSource is Champlain::TileSource {
     is also<ChamplainNetworkTileSource>
   { $!cnts }
 
+  method new (
+    ChamplainNetworkTileSourceAncestry $network-tile-source,
+                                       :$ref                = True
+  ) {
+    return Nil unless $network-tile-source;
+
+    my $o = self.bless( :$network-tile-source );
+    $o.ref if $ref;
+    $o;
+  }
+
   method new_full (
     Str()               $id,
     Str()               $name,
