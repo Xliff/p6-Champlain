@@ -23,7 +23,8 @@ class ChamplainLocation              is repr<CPointer> is export does GLib::Role
 class ChamplainMapSource             is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarker                is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarkerLayer           is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ChamplainNetworkBBoxTileSource is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMemoryCache           is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainNetworkBboxTileSource is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainNetworkTileSource     is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainNullTileSource        is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainPathLayer             is repr<CPointer> is export does GLib::Roles::Pointers { }

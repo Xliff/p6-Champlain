@@ -1,5 +1,7 @@
 use v6.c;
 
+use NativeCall;
+
 use GLib::Raw::Definitions;
 use Champlain::Raw::Definitions;
 

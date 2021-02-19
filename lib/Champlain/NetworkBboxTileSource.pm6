@@ -70,8 +70,8 @@ class Champlain::NetworkBboxTileSource is Champlain::TileSource {
   {
     my ChamplainMapProjection $p = $projection;
 
-    my guint($mnz, $mxz, $ts) = ($min_zoom, $max_zoom, $tile_size);
-    my $Bbox-tile-source = champlain_network_Bbox_tile_source_new_full(
+    my guint ($mnz, $mxz, $ts) = ($min_zoom, $max_zoom, $tile_size);
+    my $Bbox-tile-source = champlain_network_bbox_tile_source_new_full(
       $id,
       $name,
       $license,
@@ -139,15 +139,15 @@ class Champlain::NetworkBboxTileSource is Champlain::TileSource {
   }
 
   method load_map_data (Str() $map_path) is also<load-map-data> {
-    champlain_network_Bbox_tile_source_load_map_data($!cnbts, $map_path);
+    champlain_network_bbox_tile_source_load_map_data($!cnbts, $map_path);
   }
 
-  method get_type is also<get-type> is also<get-type> {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
       self.^name,
-      &champlain_network_Bbox_tile_source_get_type,
+      &champlain_network_bbox_tile_source_get_type,
       $n,
       $t
     );
