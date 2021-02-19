@@ -14,6 +14,8 @@ our subset ChamplainMarkerLayerAncestry is export
 class Champlain::MarkerLayer is Champlain::Layer {
   has ChamplainMarkerLayer $!cml is implementor;
 
+  has $!draggable;
+
   submethod BUILD (:$marker-layer) {
     self.setChamplainMarkerLayer($marker-layer) if $marker-layer;
   }
@@ -59,6 +61,22 @@ class Champlain::MarkerLayer is Champlain::Layer {
 
     $marker-layer ?? self.bless( :$marker-layer ) !! Nil;
   }
+
+  method all-markers-draggable is also<all_markers_draggable> is rw {
+    Proxy.new:
+      FETCH => -> $           { $!draggable },
+      STORE => -> $, Int() \d { self.set_all_markers_draggable(d);
+                                $!draggable = d.so }
+  }
+
+  method all-markers-undraggable is also<all_markers_undraggable> is rw {
+    Proxy.new:
+      FETCH => -> $           { $!draggable.not },
+      STORE => -> $, Int() \d { my $d = d.so.not;
+                                self.set_all_markers_draggable($d);
+                                $!draggable = $d }
+  }
+
 
   method add_marker (ChamplainMarker() $marker) is also<add-marker> {
     champlain_marker_layer_add_marker($!cml, $marker);
@@ -125,7 +143,7 @@ class Champlain::MarkerLayer is Champlain::Layer {
     champlain_marker_layer_select_all_markers($!cml);
   }
 
-  method set_all_mfarkers_draggable is also<set-all-mfarkers-draggable> {
+  method set_all_markers_draggable is also<set-all-markers-draggable> {
     champlain_marker_layer_set_all_markers_draggable($!cml);
   }
 
