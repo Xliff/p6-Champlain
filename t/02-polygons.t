@@ -39,7 +39,6 @@ sub make-button ($text) {
   $button;
 }
 
-
 sub append-point($layer, $lon, $lat) {
   my $c = Champlain::Coordinate.new_full($lon, $lat);
 
@@ -55,7 +54,7 @@ sub MAIN {
   $stage.destroy.tap({ Clutter::Main.quit });
 
   my $view = Champlain::View.new.setup(
-    size =>(800, 600)
+    size => (800, 600)
   );
   $stage.add-child($view);
 
