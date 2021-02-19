@@ -36,7 +36,8 @@
       "Champlain::TileSource"             :  "lib/Champlain/TileSource.pm6"            ,
       "Champlain::View"                   :  "lib/Champlain/View.pm6"                  ,
       "Champlain::Label"                  :  "lib/Champlain/Label.pm6"                 ,
-      "Champlain::NetworkTileSource"      :  "lib/Champlain/NetworkTileSource.pm6"     
+      "Champlain::NetworkTileSource"      :  "lib/Champlain/NetworkTileSource.pm6"     ,
+      "Champlain::NullTileSource"         :  "lib/Champlain/NullTileSource.pm6"        
     },
     "name": "Perl6-Champlain",
     "perl": "6.c",
