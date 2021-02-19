@@ -11,6 +11,23 @@ use Clutter::Actor;
 
 use Champlain::MapSource;
 
+my @attributes = <
+  animate-zoom                animate_zoom
+  deceleration
+  goto-animation-duration     goto_animation_duration
+  goto-animation-mode         goto_animation_mode
+  keep-center-on-resize       keep_center_on_resize
+  kinetic-mode                kinetic_mode
+  latitude
+  longitude
+  max-zoom-level              max_zoom_level
+  min-zoom-level              min_zoom_level
+  state
+  zoom-level                  zoom_level
+  zoom-on-double-click        zoom_on_double_click
+>;
+
+
 our subset ChamplainViewAncestry is export of Mu
   where ChamplainView | ClutterActorAncestry;
 
@@ -53,6 +70,38 @@ class Champlain::View is Clutter::Actor {
     my $view = champlain_view_new();
 
     $view ?? self.bless( :$view ) !! Nil;
+  }
+
+  method setup(*%data) {
+    for %data.keys -> $_ is copy {
+      when @attributes.any  {
+        say "CvAA: {$_}" if $DEBUG;
+        self."$_"() = %data{$_};
+        %data{$_}:delete;
+      }
+
+      when 'location' | 'center-on' | 'center_on' {
+        self.center_on( |%data{$_} );
+        %data{$_}:delete;
+      }
+
+      # when @add-methods.any {
+      #   my $proper-name = S:g/'-'/_/;
+      #   say "CvA: {$_}" if $DEBUG;
+      #   self."add_{ $proper-name }"( |%data{$_} );
+      #   %data{$_}:delete;
+      # }
+      #
+      # when @set-methods.any {
+      #   my $proper-name = S:g/'-'/_/;
+      #   say "CvSM: {$_}" if $DEBUG;
+      #   self."set_{ $proper-name }"( |%data{$_} );
+      #   %data{$_}:delete;
+      # }
+
+    }
+    self.Clutter::Actor::setup(|%data) if %data.keys;
+    self
   }
 
   # Type: gboolean
