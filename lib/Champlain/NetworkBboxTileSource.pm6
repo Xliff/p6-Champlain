@@ -7,6 +7,7 @@ use NativeCall;
 use Champlain::Raw::Types;
 use Champlain::Raw::NetworkBboxTileSource;
 
+use GLib::Value;
 use Champlain::TileSource;
 
 our subset ChamplainNetworkBboxTileSourceAncestry is export of Mu
@@ -64,7 +65,9 @@ class Champlain::NetworkBboxTileSource is Champlain::TileSource {
     Int()               $tile_size,
     Int()               $projection,
     ChamplainRenderer() $renderer
- ) {
+  )
+    is also<new-full>
+  {
     my ChamplainMapProjection $p = $projection;
 
     my guint($mnz, $mxz, $ts) = ($min_zoom, $max_zoom, $tile_size);
@@ -83,11 +86,63 @@ class Champlain::NetworkBboxTileSource is Champlain::TileSource {
     $Bbox-tile-source ?? self.bless( :$Bbox-tile-source ) !! Nil;
   }
 
-  method load_map_data (Str() $map_path) {
+  # Type: gchar
+  method api-uri is rw  is also<api_uri> {
+    my $gv = GLib::Value.new( G_TYPE_STRING );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('api-uri', $gv)
+        );
+        $gv.string;
+      },
+      STORE => -> $, Str() $val is copy {
+        $gv.string = $val;
+        self.prop_set('api-uri', $gv);
+      }
+    );
+  }
+
+  # Type: gchar
+  method proxy-uri is rw  is also<proxy_uri> {
+    my $gv = GLib::Value.new( G_TYPE_STRING );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('proxy-uri', $gv)
+        );
+        $gv.string;
+      },
+      STORE => -> $, Str() $val is copy {
+        $gv.string = $val;
+        self.prop_set('proxy-uri', $gv);
+      }
+    );
+  }
+
+  # Type: ChamplainState
+  method state is rw  {
+    my $gv = GLib::Value.new( GLib::Value.typeFromEnum(ChamplainState) );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('state', $gv)
+        );
+
+        ChamplainStateEnum( $gv.valueFromEnum(ChamplainState) )
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.valueFromEnum(ChamplainState) = $val;
+        self.prop_set('state', $gv);
+      }
+    );
+  }
+
+  method load_map_data (Str() $map_path) is also<load-map-data> {
     champlain_network_Bbox_tile_source_load_map_data($!cnbts, $map_path);
   }
 
-  method get_type is also<get-type> {
+  method get_type is also<get-type> is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
