@@ -15,6 +15,8 @@ role Champlain::Roles::Location {
 
   method Champlain::Raw::Definitions::ChamplainLocation
   { $!cl }
+  method ChamplainLocation
+  { $!cl }
 
   method get_latitude {
     champlain_location_get_latitude($!cl);
@@ -22,6 +24,13 @@ role Champlain::Roles::Location {
 
   method get_longitude {
     champlain_location_get_longitude($!cl);
+  }
+
+  method getLocation {
+    (
+      self.get_latitude,
+      self.get_longitude
+    );
   }
 
   method get_type {
@@ -36,12 +45,13 @@ role Champlain::Roles::Location {
   }
 
   method set_location (Num() $latitude, Num() $longitude) {
-    my Num ($lat, $long) = ($latitude, $longitude);
+    my gdouble ($lat, $long) = ($latitude, $longitude);
 
     champlain_location_set_location($!cl, $lat, $long);
   }
 
 }
+
 
 use GLib::Roles::Object;
 
