@@ -1,9 +1,7 @@
 use v6.c;
 
 use Champlain::Raw::Types;
-use Champlain::FileCache;
-
-use Champlain::FileCache;
+use Champlain::Raw::FileCache;
 
 our subset ChamplainFileCacheAncestry is export of Mu
   where ChamplainFileCache | ChamplainTileCacheAncestry;
