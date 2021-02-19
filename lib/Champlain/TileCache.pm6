@@ -66,12 +66,13 @@ class Champlain::TileCache is Champlain::MapSource {
     champlain_tile_cache_refresh_tile_time($!ctc, $tile);
   }
 
-  method store_tile (ChamplainTile() $tile, Str() $contents, Int() $size) is also<store-tile> {
+  method store_tile (ChamplainTile() $tile, Str() $contents, Int() $size)
+    is also<store-tile>
+  {
     my gsize $s = $size;
 
     champlain_tile_cache_store_tile($!ctc, $tile, $contents, $s);
   }
-
 
 }
 
@@ -102,8 +103,8 @@ sub champlain_tile_cache_refresh_tile_time (
 
 sub champlain_tile_cache_store_tile (
   ChamplainTileCache $tile_cache,
-  ChamplainTile      $tile, 
-  Str                $contents, 
+  ChamplainTile      $tile,
+  Str                $contents,
   gsize              $size
 )
   is native(champlain)
