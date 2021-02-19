@@ -14,11 +14,25 @@ use Champlain::Marker;
 our subset ChamplainLabelAncestry is export of Mu
   where ChamplainLabel | ChamplainMarkerAncestry;
 
+my @attributes = <
+  alignment
+  draw-background
+  ellipsize
+  font-name
+  single-line-mode
+  text
+  use-markup
+  wrap
+  wrap-mode
+>;
+
+my @set-methods = 'location'.Array;
+
 class Champlain::Label is Champlain::Marker {
   has ChamplainLabel $!cl is implementor;
 
-  submethod BUILD (:$marker) {
-    self.setChamplainLabel($marker) if $marker;
+  submethod BUILD (:$label) {
+    self.setChamplainLabel($label) if $label;
   }
 
   method setChamplainLabel(ChamplainLabelAncestry $_) {
@@ -26,7 +40,7 @@ class Champlain::Label is Champlain::Marker {
 
     $!cl = do {
       when ChamplainLabel {
-        $to-parent = cast(ChamplainLabel, $_);
+        $to-parent = cast(ChamplainMarker, $_);
         $_;
       }
 
@@ -35,17 +49,17 @@ class Champlain::Label is Champlain::Marker {
         cast(ChamplainLabel, $_);
       }
     }
-    self.setChamplainLabel($to-parent);
+    self.setChamplainMarker($to-parent);
   }
 
   method Champlain::Raw::Definitions::ChamplainLabel
     is also<ChamplainLabel>
   { $!cl }
 
-  multi method new (ChamplainLabelAncestry $marker, :$ref = True) {
-    return Nil unless $marker;
+  multi method new (ChamplainLabelAncestry $label, :$ref = True) {
+    return Nil unless $label;
 
-    my $o = self.bless( :$marker );
+    my $o = self.bless( :$label );
     $o.ref if $ref;
     $o;
   }
@@ -83,8 +97,8 @@ class Champlain::Label is Champlain::Marker {
   method new_with_text (
     Str()          $text,
     Str()          $font,
-    ClutterColor() $text_color,
-    ClutterColor() $label_color
+    ClutterColor() $text_color   = ClutterColor,
+    ClutterColor() $label_color  = ClutterColor
   )
     is also<new-with-text>
   {
@@ -96,6 +110,21 @@ class Champlain::Label is Champlain::Marker {
     );
 
     $label ?? self.bless( :$label ) !! Nil;
+  }
+
+  method setup(*%data) {
+    for %data.keys -> $_ is copy {
+
+      when @set-methods.any {
+        my $proper-name = S:g /'-'/_/;
+        say "ChLSM: {$_}" if $DEBUG;
+        self."set_{ $proper-name }"( |%data{$_} );
+        %data{$_}:delete
+      }
+
+    }
+    # Not as clean as I like it, but it solves problems nextwith does NOT.
+    self.Clutter::Actor::setup(|%data) if %data.keys;
   }
 
   # Type: PangoAlignment
