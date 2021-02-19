@@ -16,17 +16,17 @@ our subset ChamplainLabelAncestry is export of Mu
 
 my @attributes = <
   alignment
+  color
   draw-background
   ellipsize
   font-name
+  image
   single-line-mode
   text
   use-markup
   wrap
   wrap-mode
 >;
-
-my @set-methods = 'location'.Array;
 
 class Champlain::Label is Champlain::Marker {
   has ChamplainLabel $!cl is implementor;
@@ -115,30 +115,38 @@ class Champlain::Label is Champlain::Marker {
   method setup(*%data) {
     for %data.keys -> $_ is copy {
 
-      when @set-methods.any {
-        my $proper-name = S:g /'-'/_/;
-        say "ChLSM: {$_}" if $DEBUG;
-        self."set_{ $proper-name }"( |%data{$_} );
-        %data{$_}:delete
+      when @attributes.any  {
+        my $proper-name = S:g/'-'/_/;
+        say "CLAA: {$_}" if $DEBUG;
+        self."$proper-name"() = %data{$_};
+        %data{$_}:delete;
       }
+
+      # when @set-methods.any {
+      #   my $proper-name = S:g/'-'/_/;
+      #   say "CLSM: {$_}" if $DEBUG;
+      #   self."set_{ $proper-name }"( |%data{$_} );
+      #   %data{$_}:delete
+      # }
 
     }
     # Not as clean as I like it, but it solves problems nextwith does NOT.
-    self.Clutter::Actor::setup(|%data) if %data.keys;
+    self.Champlain::Marker::setup( |%data ) if %data.keys;
+    self;
   }
 
   # Type: PangoAlignment
   method alignment is rw  {
-    my $gv = GLib::Value.new( GLib::Value.typeFromEnum(PangoAlignment) );
+    my $gv = GLib::Value.new( GLib::Value.gtypeFromType(PangoAlignment) );
     Proxy.new(
       FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('alignment', $gv)
         );
-        PangoAlignmentEnum( $gv.valueFromEnum(PangoAlignment) );
+        PangoAlignmentEnum( $gv.valueFromType(PangoAlignment) );
       },
       STORE => -> $, Int() $val is copy {
-        $gv.valueFromEnum(PangoAlignment) = $val;
+        $gv.valueFromType(PangoAlignment) = $val;
         self.prop_set('alignment', $gv);
       }
     );
@@ -154,14 +162,14 @@ class Champlain::Label is Champlain::Marker {
         );
 
         propReturnObject(
-          $gv.object,
+          $gv.boxed,
           $raw,
           ClutterColor,
           Clutter::Color
         )
       },
       STORE => -> $, ClutterColor() $val is copy {
-        $gv.object = $val;
+        $gv.boxed = $val;
         self.prop_set('color', $gv);
       }
     );
@@ -285,14 +293,14 @@ class Champlain::Label is Champlain::Marker {
         );
 
         propReturnObject(
-          $gv.object,
+          $gv.boxed,
           $raw,
           ClutterColor,
           Clutter::Color
         );
       },
       STORE => -> $, ClutterColor() $val is copy {
-        $gv.object = $val;
+        $gv.boxed = $val;
         self.prop_set('text-color', $gv);
       }
     );
