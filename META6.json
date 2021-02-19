@@ -9,6 +9,7 @@
     "provides": {
       "Champlain::Raw::Definitions"           :  "lib/Champlain/Raw/Definitions.pm6"           ,
       "Champlain::Raw::BoundingBox"           :  "lib/Champlain/Raw/BoundingBox.pm6"           ,
+      "Champlain::Raw::FileCache"             :  "lib/Champlain/Raw/FileCache.pm6"             ,
       "Champlain::Raw::Label"                 :  "lib/Champlain/Raw/Label.pm6"                 ,
       "Champlain::Raw::License"               :  "lib/Champlain/Raw/License.pm6"               ,
       "Champlain::Raw::MapSource"             :  "lib/Champlain/Raw/MapSource.pm6"             ,
@@ -26,6 +27,7 @@
       "Champlain::Roles::Location"            :  "lib/Champlain/Roles/Location.pm6"            ,
       "Champlain::BoundingBox"                :  "lib/Champlain/BoundingBox.pm6"               ,
       "Champlain::Coordinate"                 :  "lib/Champlain/Coordinate.pm6"                ,
+      "Champlain::FileCache"                  :  "lib/Champlain/FileCache.pm6"                 ,
       "Champlain::Layer"                      :  "lib/Champlain/Layer.pm6"                     ,
       "Champlain::License"                    :  "lib/Champlain/License.pm6"                   ,
       "Champlain::MapSource"                  :  "lib/Champlain/MapSource.pm6"                 ,
@@ -36,8 +38,10 @@
       "Champlain::TileCache"                  :  "lib/Champlain/TileCache.pm6"                 ,
       "Champlain::TileSource"                 :  "lib/Champlain/TileSource.pm6"                ,
       "Champlain::View"                       :  "lib/Champlain/View.pm6"                      ,
+      "GTK::ChamplainEmbed"                   :  "lib/GTK/ChamplainEmbed.pm6"                  ,
       "Champlain::FileTileSource"             :  "lib/Champlain/FileTileSource.pm6"            ,
       "Champlain::Label"                      :  "lib/Champlain/Label.pm6"                     ,
+      "Champlain::MemoryTileCache"            :  "lib/Champlain/MemoryTileCache.pm6"           ,
       "Champlain::NetworkBboxTileSource"      :  "lib/Champlain/NetworkBboxTileSource.pm6"     ,
       "Champlain::NetworkTileSource"          :  "lib/Champlain/NetworkTileSource.pm6"         ,
       "Champlain::NullTileSource"             :  "lib/Champlain/NullTileSource.pm6"            
