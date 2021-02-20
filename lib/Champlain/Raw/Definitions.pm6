@@ -31,6 +31,7 @@ class ChamplainNullTileSource        is repr<CPointer> is export does GLib::Role
 class ChamplainPathLayer             is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainPoint                 is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainRenderer              is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainScale                 is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainTile                  is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainTileCache             is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainTileSource            is repr<CPointer> is export does GLib::Roles::Pointers { }
