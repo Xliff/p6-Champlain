@@ -11,6 +11,11 @@ use Clutter::Actor;
 our subset ChamplainLicenseAncestry is export of Mu
   where ChamplainLicense | ClutterActorAncestry;
 
+my @attributes = <
+  alignment 
+  extra-text  extra_text
+>;
+
 class Champlain::License is Clutter::Actor {
   has ChamplainLicense $!cl is implementor;
 
@@ -51,10 +56,37 @@ class Champlain::License is Clutter::Actor {
 
     $license ?? self.bless( :$license ) !! Nil;
   }
+  
+  method setup(*%data) {
+    for %data.keys -> $_ is copy {
+      when @attributes.any  {
+        say "LAA: {$_}" if $DEBUG;
+        self."$_"() = %data{$_};
+        %data{$_}:delete;
+      }
+
+      # when @add-methods.any {
+      #   my $proper-name = S:g/'-'/_/;
+      #   say "CvA: {$_}" if $DEBUG;
+      #   self."add_{ $proper-name }"( |%data{$_} );
+      #   %data{$_}:delete;
+      # }
+      #
+      # when @set-methods.any {
+      #   my $proper-name = S:g/'-'/_/;
+      #   say "CvSM: {$_}" if $DEBUG;
+      #   self."set_{ $proper-name }"( |%data{$_} );
+      #   %data{$_}:delete;
+      # }
+
+    }
+    self.Clutter::Actor::setup(|%data) if %data.keys;
+    self
+  }
 
   # Type: PangoAlignment
    method alignment is rw  {
-     my $gv = GLib::Value.new( GLib::Value.typeFromEnum(PangoAlignment) );
+     my $gv = GLib::Value.new( GLib::Value.gtypeFromType(PangoAlignment) );
      Proxy.new(
        FETCH => sub ($) {
          $gv = GLib::Value.new(
