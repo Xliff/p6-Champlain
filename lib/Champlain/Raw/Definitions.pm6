@@ -152,7 +152,7 @@ class ChamplainMemphisRule is export is repr<CStruct> does GLib::Roles::Pointers
   # Write proxies for all attributes
   has CArray[Str]              $!keys;
   has CArray[Str]              $!values;
-  has ChamplainMemphisRuleType $.type;
+  has ChamplainMemphisRuleType $.type     is rw;
   has ChamplainMemphisRuleAttr $!polygon;
   has ChamplainMemphisRuleAttr $!line;
   has ChamplainMemphisRuleAttr $!border;
