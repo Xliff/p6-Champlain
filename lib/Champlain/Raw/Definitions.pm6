@@ -3,7 +3,6 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
-
 use GLib::Roles::Pointers;
 
 unit package Champlain::Raw::Definitions;
@@ -25,6 +24,7 @@ class ChamplainMapSource             is repr<CPointer> is export does GLib::Role
 class ChamplainMarker                is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarkerLayer           is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMemoryCache           is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMemphisRenderer       is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainNetworkBboxTileSource is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainNetworkTileSource     is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainNullTileSource        is repr<CPointer> is export does GLib::Roles::Pointers { }
@@ -42,6 +42,14 @@ class GtkChamplainEmbed              is repr<CPointer> is export does GLib::Role
 constant ChamplainMapProjection is export := guint32;
 our enum ChamplainMapProjectionEnum is export <
   CHAMPLAIN_MAP_PROJECTION_MERCATOR
+>;
+
+constant ChamplainMemphisRuleType is export := guint32;
+our enum ChamplainMemphisRuleEnum is export <
+  CHAMPLAIN_MEMPHIS_RULE_TYPE_UNKNOWN
+  CHAMPLAIN_MEMPHIS_RULE_TYPE_NODE
+  CHAMPLAIN_MEMPHIS_RULE_TYPE_WAY
+  CHAMPLAIN_MEMPHIS_RULE_TYPE_RELATION
 >;
 
 constant ChamplainSelectionMode is export := guint32;
@@ -70,4 +78,63 @@ class ChamplainBoundingBox is export is repr<CStruct> does GLib::Roles::Pointers
   has gdouble $.top    is rw;
   has gdouble $.right  is rw;
   has gdouble $.bottom is rw;
+}
+
+class ChamplainMemphisRuleAttr is export is repr<CStruct> does GLib::Roles::Pointers {
+  has guint8  $.z_min;
+  has guint8  $.z_max;
+  has guint8  $.color_red;
+  has guint8  $.color_green;
+  has guint8  $.color_blue;
+  has guint8  $.color_alpha;
+  has gchar   $.style;
+  has gdouble $.size;
+
+  method z-min is rw {
+    Proxy.new:
+      FETCH => -> $           { $!z_min },
+      STORE => -> $, Int() \z { $!z_min = z }
+  }
+
+  method z-max is rw {
+    Proxy.new:
+      FETCH => -> $           { $!z_max },
+      STORE => -> $, Int() \z { $!z_max = z }
+  }
+
+  method color_red is rw {
+    Proxy.new:
+      FETCH => -> $           { $!color_red },
+      STORE => -> $, Int() \r { $!color_red = r }
+  }
+
+  method color_green is rw {
+    Proxy.new:
+      FETCH => -> $           { $!color_green },
+      STORE => -> $, Int() \g { $!color_green = g }
+  }
+
+  method color_blue is rw {
+    Proxy.new:
+      FETCH => -> $           { $!color_blue },
+      STORE => -> $, Int() \b { $!color_blue = b }
+  }
+
+  method color_alpha is rw {
+    Proxy.new:
+      FETCH => ->             { $!color_alpha },
+      STORE => -> $, Int() \a { $!color_alpha = a }
+  }
+
+}
+
+class ChamplainMemphisRule is export is repr<CStruct> does GLib::Roles::Pointers {
+  # Write proxies for all attributes
+  has CArray[Str]              $.keys    is rw;
+  has CArray[Str]              $.values  is rw;
+  has ChamplainMemphisRuleType $.type    is rw;
+  has ChamplainMemphisRuleAttr $.polygon is rw;
+  has ChamplainMemphisRuleAttr $.line    is rw;
+  has ChamplainMemphisRuleAttr $.border  is rw;
+  has ChamplainMemphisRuleAttr $.text    is rw;
 }
