@@ -3,12 +3,30 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use GLib::Raw::Subs;
+use GLib::Raw::Structs;
 use GLib::Roles::Pointers;
 
 unit package Champlain::Raw::Definitions;
 
 # Forced compile counter
 constant forced = 0;
+
+constant CHAMPLAIN_MAP_SOURCE_OSM_OSMARENDER    is export = 'osm-osmarender';
+constant CHAMPLAIN_MAP_SOURCE_OAM               is export = 'OpenAerialMap';
+constant CHAMPLAIN_MAP_SOURCE_OSM_MAPQUEST      is export = 'osm-mapquest';
+constant CHAMPLAIN_MAP_SOURCE_OSM_AERIAL_MAP    is export = 'osm-aerialmap';
+constant CHAMPLAIN_MAP_SOURCE_OSM_MAPNIK        is export = 'osm-mapnik';
+constant CHAMPLAIN_MAP_SOURCE_OSM_CYCLE_MAP     is export = 'osm-cyclemap';
+constant CHAMPLAIN_MAP_SOURCE_OSM_TRANSPORT_MAP is export = 'osm-transportmap';
+constant CHAMPLAIN_MAP_SOURCE_MFF_RELIEF        is export = 'mff-relief';
+constant CHAMPLAIN_MAP_SOURCE_OWM_CLOUDS        is export = 'owm-clouds';
+constant CHAMPLAIN_MAP_SOURCE_OWM_PRECIPITATION is export = 'owm-precipitation';
+constant CHAMPLAIN_MAP_SOURCE_OWM_PRESSURE      is export = 'owm-pressure';
+constant CHAMPLAIN_MAP_SOURCE_OWM_WIND          is export = 'owm-wind';
+constant CHAMPLAIN_MAP_SOURCE_OWM_TEMPERATURE   is export = 'owm-temperature';
+constant CHAMPLAIN_MAP_SOURCE_MEMPHIS_LOCAL     is export = 'memphis-local';
+constant CHAMPLAIN_MAP_SOURCE_MEMPHIS_NETWORK   is export = 'memphis-network';
 
 constant champlain     is export = 'champlain-0.12',v0;
 constant champlain-gtk is export = 'champlain-gtk-0.12',v0;
@@ -21,6 +39,8 @@ class ChamplainLayer                 is repr<CPointer> is export does GLib::Role
 class ChamplainLicense               is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainLocation              is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMapSource             is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMapSourceDesc         is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMapSourceFactory      is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarker                is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarkerLayer           is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMemoryCache           is repr<CPointer> is export does GLib::Roles::Pointers { }
@@ -93,48 +113,142 @@ class ChamplainMemphisRuleAttr is export is repr<CStruct> does GLib::Roles::Poin
   method z-min is rw {
     Proxy.new:
       FETCH => -> $           { $!z_min },
-      STORE => -> $, Int() \z { $!z_min = z }
+      STORE => -> $, Int() \z { $!z_min = z };
   }
 
   method z-max is rw {
     Proxy.new:
       FETCH => -> $           { $!z_max },
-      STORE => -> $, Int() \z { $!z_max = z }
+      STORE => -> $, Int() \z { $!z_max = z };
   }
 
   method color_red is rw {
     Proxy.new:
       FETCH => -> $           { $!color_red },
-      STORE => -> $, Int() \r { $!color_red = r }
+      STORE => -> $, Int() \r { $!color_red = r };
   }
 
   method color_green is rw {
     Proxy.new:
       FETCH => -> $           { $!color_green },
-      STORE => -> $, Int() \g { $!color_green = g }
+      STORE => -> $, Int() \g { $!color_green = g };
   }
 
   method color_blue is rw {
     Proxy.new:
       FETCH => -> $           { $!color_blue },
-      STORE => -> $, Int() \b { $!color_blue = b }
+      STORE => -> $, Int() \b { $!color_blue = b };
   }
 
   method color_alpha is rw {
     Proxy.new:
       FETCH => ->             { $!color_alpha },
-      STORE => -> $, Int() \a { $!color_alpha = a }
+      STORE => -> $, Int() \a { $!color_alpha = a };
   }
 
 }
 
 class ChamplainMemphisRule is export is repr<CStruct> does GLib::Roles::Pointers {
   # Write proxies for all attributes
-  has CArray[Str]              $.keys    is rw;
-  has CArray[Str]              $.values  is rw;
-  has ChamplainMemphisRuleType $.type    is rw;
-  has ChamplainMemphisRuleAttr $.polygon is rw;
-  has ChamplainMemphisRuleAttr $.line    is rw;
-  has ChamplainMemphisRuleAttr $.border  is rw;
-  has ChamplainMemphisRuleAttr $.text    is rw;
+  has CArray[Str]              $!keys;
+  has CArray[Str]              $!values;
+  has ChamplainMemphisRuleType $.type;
+  has ChamplainMemphisRuleAttr $!polygon;
+  has ChamplainMemphisRuleAttr $!line;
+  has ChamplainMemphisRuleAttr $!border;
+  has ChamplainMemphisRuleAttr $!text;
+
+  method keys is rw {
+    Proxy.new:
+      FETCH => -> $          { $!keys },
+      STORE => -> $, $newVal {
+        my $to-bind;
+
+        given $newVal {
+          when Positional  { $to-bind = ArrayToCArray(Str, $newVal) }
+          when CArray[Str] { $to-bind = $_ }
+
+          default {
+            die "Impossible to bind a { .^name } to {
+                 &*ROUTINE.^name } as it only takes values acceptible to
+                 a CArray[Str]";
+          }
+        }
+
+        $!keys := $to-bind;
+      }
+  }
+
+  method values is rw {
+    Proxy.new:
+      FETCH => -> $          { $!values },
+      STORE => -> $, $newVal {
+        my $to-bind;
+
+        given $newVal {
+          when Positional  { $to-bind = ArrayToCArray(Str, $newVal) }
+          when CArray[Str] { $to-bind = $_ }
+
+          default {
+            die "Impossible to bind a { .^name } to {
+                 &*ROUTINE.^name } as it only takes values acceptible to
+                 a CArray[Str]";
+          }
+        }
+
+        $!values := $to-bind;
+      }
+  }
+
+  method polygon is rw {
+    Proxy.new:
+      FETCH => -> $  { $!polygon },
+      STORE => -> $, ChamplainMemphisRuleAttr() $newVal {
+        $!polygon := $newVal;
+      };
+  }
+
+  method line is rw {
+    Proxy.new:
+      FETCH => -> $  { $!line },
+      STORE => -> $, ChamplainMemphisRuleAttr() $newVal {
+        $!line := $newVal;
+      };
+  }
+
+  method border is rw {
+    Proxy.new:
+      FETCH => -> $  { $!border },
+      STORE => -> $, ChamplainMemphisRuleAttr() $newVal {
+        $!border := $newVal;
+      };
+  }
+
+  method text is rw {
+    Proxy.new:
+      FETCH => -> $  { $!text },
+      STORE => -> $, ChamplainMemphisRuleAttr() $newVal {
+        $!text := $newVal;
+      };
+  }
+
+  # cw: Currently, this CANNOT be used, but the definition is here to
+  #     mark intent. The reason this cannot be used is that we need
+  #     a per-instance tracking method to denote whether it was
+  #     C or Raku allocated. Raku allocated structs do not need to be free'd
+  #     REPR CStrut classes *cannot* take on non-C members, so any such
+  #     tracking structure would need to be external. It would also have to
+  #     have its own allocation and marking mechanisms.  As of this writing,
+  #     the only shoultion would be to mark all C-based instances by
+  #     running them in a function, ala:
+  #       c-allocated(ChamplainMemphisRule, $instance)
+  #
+  #     This would have to be run on ALL c-allocated ChamplainMemphisRule
+  #     instances or a crash is likely at GC-time. Typically I would
+  #     prefer the API do more work than the code, which is why find this
+  #     solution suboptimal.
+  #
+  # submethod DESTROY {
+  #   free(self);
+  # }
 }
