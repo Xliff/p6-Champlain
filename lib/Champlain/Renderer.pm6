@@ -9,10 +9,45 @@ use Champlain::Raw::Types;
 
 use GLib::Roles::Object;
 
+our subset ChamplainRendererAncestry is export of Mu
+  where ChamplainRenderer | GObject;
+
 class Champlain::Renderer {
   also does GLib::Roles::Object;
 
   has ChamplainRenderer $!cr is implementor;
+
+  submethod BUILD (:$renderer) {
+    self.setChamplainRenderer($renderer) if $renderer;
+  }
+
+  method setChamplainRenderer (ChamplainRendererAncestry $_) {
+    my $to-parent;
+
+    $!cr = do {
+      when ChamplainRenderer {
+        $to-parent = cast(GObject, $to-parent);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(ChamplainRenderer, $_);
+      }
+    }
+    self!setObject($to-parent);
+  }
+
+  method Champlain::Raw::Definitions::ChamplainRenderer
+  { $!cr }
+
+  method new (ChamplainRendererAncestry $renderer, :$ref = True) {
+    return Nil unless $renderer;
+
+    my $o = self.bless( :$renderer );
+    $o.ref if $ref;
+    $o;
+  }
 
   method get_type is also<get-type> {
     state ($n, $t);
@@ -45,7 +80,7 @@ class Champlain::Renderer {
   multi method set_data (CArray[uint8] $data, $size = $data.elems) {
     samewith( pointer-to($data), $size );
   }
-  multi method set_data (Pointer $data, guint $size) {
+  multi method set_data (Pointer $data, Int() $size) {
     my guint $s = $size;
 
     champlain_renderer_set_data($!cr, $data, $s);
