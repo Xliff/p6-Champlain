@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use Champlain::Raw::Types;
 
 use GLib::Roles::StaticClass;
@@ -9,7 +11,7 @@ unit package Champlain::Enums;
 class MapProjection {
   also does GLib::Roles::StaticClass;
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -25,7 +27,7 @@ class MapProjection {
 class SelectionMode {
   also does GLib::Roles::StaticClass;
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -41,7 +43,7 @@ class SelectionMode {
 class Unit {
   also does GLib::Roles::StaticClass;
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -57,7 +59,7 @@ class Unit {
 class State {
   also does GLib::Roles::StaticClass;
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -69,25 +71,25 @@ class State {
   }
 }
 
-sub champlain_map_projection_get_type (void)
+sub champlain_map_projection_get_type ()
   returns GType
   is export
   is native(champlain)
 { * }
 
-sub champlain_selection_mode_get_type (void)
+sub champlain_selection_mode_get_type ()
   returns GType
   is export
   is native(champlain)
 { * }
 
-sub champlain_unit_get_type (void)
+sub champlain_unit_get_type ()
   returns GType
   is export
   is native(champlain)
 { * }
 
-sub champlain_state_get_type (void)
+sub champlain_state_get_type ()
   returns GType
   is export
   is native(champlain)
