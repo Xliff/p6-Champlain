@@ -39,6 +39,7 @@ class ChamplainLayer                 is repr<CPointer> is export does GLib::Role
 class ChamplainLicense               is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainLocation              is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMapSource             is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainMapSourceChain        is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMapSourceDesc         is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMapSourceFactory      is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainMarker                is repr<CPointer> is export does GLib::Roles::Pointers { }
