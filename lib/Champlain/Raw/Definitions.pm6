@@ -34,6 +34,7 @@ constant champlain-gtk is export = 'champlain-gtk-0.12',v0;
 class ChamplainCoordinate            is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainFileCache             is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainFileTileSource        is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainImageRenderer         is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainLabel                 is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainLayer                 is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainLicense               is repr<CPointer> is export does GLib::Roles::Pointers { }
