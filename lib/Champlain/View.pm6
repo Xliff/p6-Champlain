@@ -9,6 +9,7 @@ use GLib::GList;
 use GLib::Value;
 use Clutter::Actor;
 
+use Champlain::License;
 use Champlain::MapSource;
 
 my @attributes = <
@@ -372,6 +373,12 @@ class Champlain::View is Clutter::Actor {
     );
   }
 
+  method horizontal_wrap is rw is also<horizontal-wrap> {
+    Proxy.new:
+      FETCH => -> $           { self.get_horizontal_wrap    },
+      STORE => -> $, Int() \w { self.set_horizontal_wrap(w) };
+  }
+
   # Is originally:
   # ChamplainView, gpointer --> void
   method animation-completed is also<animation_completed> {
@@ -384,6 +391,10 @@ class Champlain::View is Clutter::Actor {
     self.connect($!cv, 'layer-relocated');
   }
 
+  method getLocation {
+    (self.latitude, self.longitude);
+  }
+
   method add_layer (ChamplainLayer() $layer) is also<add-layer> {
     champlain_view_add_layer($!cv, $layer);
   }
@@ -391,7 +402,9 @@ class Champlain::View is Clutter::Actor {
   method add_overlay_source (
     ChamplainMapSource() $map_source,
     Int()                $opacity
-  ) is also<add-overlay-source> {
+  )
+    is also<add-overlay-source>
+  {
     my guint8 $o = $opacity;
 
     champlain_view_add_overlay_source($!cv, $map_source, $o);
@@ -401,7 +414,9 @@ class Champlain::View is Clutter::Actor {
     ClutterActor() $child,
     Int()          $x_align,
     Int()          $y_align
-  ) is also<bin-layout-add> {
+  )
+    is also<bin-layout-add>
+  {
     my ClutterBinAlignment ($xa, $ya) = ($x_align, $y_align);
 
     champlain_view_bin_layout_add($!cv, $child, $xa, $ya);
@@ -413,13 +428,17 @@ class Champlain::View is Clutter::Actor {
     champlain_view_center_on($!cv, $lat, $long);
   }
 
-  method ensure_layers_visible (Int() $animate) is also<ensure-layers-visible> {
+  method ensure_layers_visible (Int() $animate)
+    is also<ensure-layers-visible>
+  {
     my gboolean $a = $animate.so.Int;
 
     champlain_view_ensure_layers_visible($!cv, $a);
   }
 
-  method ensure_visible (ChamplainBoundingBox $bbox, Int() $animate) is also<ensure-visible> {
+  method ensure_visible (ChamplainBoundingBox $bbox, Int() $animate)
+    is also<ensure-visible>
+  {
     my gboolean $a = $animate.so.Int;
 
     champlain_view_ensure_visible($!cv, $bbox, $a);
@@ -430,7 +449,9 @@ class Champlain::View is Clutter::Actor {
   }
 
   # Transfer: none
-  method get_background_pattern (:$raw = False) is also<get-background-pattern> {
+  method get_background_pattern (:$raw = False)
+    is also<get-background-pattern>
+  {
     my $cc = champlain_view_get_background_pattern($!cv);
 
     $cc ??
@@ -443,7 +464,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_get_bounding_box($!cv);
   }
 
-  method get_bounding_box_for_zoom_level (Int() $zoom_level) is also<get-bounding-box-for-zoom-level> {
+  method get_bounding_box_for_zoom_level (Int() $zoom_level)
+    is also<get-bounding-box-for-zoom-level>
+  {
     my guint $z = $zoom_level;
 
     champlain_view_get_bounding_box_for_zoom_level($!cv, $z);
@@ -501,7 +524,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_get_min_zoom_level($!cv);
   }
 
-  method get_overlay_sources (:$glist = False, :$raw = False) is also<get-overlay-sources> {
+  method get_overlay_sources (:$glist = False, :$raw = False)
+    is also<get-overlay-sources>
+  {
     returnGList(
       champlain_view_get_overlay_sources($!cv),
       $glist,
@@ -592,7 +617,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_remove_layer($!cv, $layer);
   }
 
-  method remove_overlay_source (ChamplainMapSource() $map_source) is also<remove-overlay-source> {
+  method remove_overlay_source (ChamplainMapSource() $map_source)
+    is also<remove-overlay-source>
+  {
     champlain_view_remove_overlay_source($!cv, $map_source);
   }
 
@@ -602,7 +629,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_set_animate_zoom($!cv, $v);
   }
 
-  method set_background_pattern (ClutterContent() $background) is also<set-background-pattern> {
+  method set_background_pattern (ClutterContent() $background)
+    is also<set-background-pattern>
+  {
     champlain_view_set_background_pattern($!cv, $background);
   }
 
@@ -618,7 +647,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_set_horizontal_wrap($!cv, $w);
   }
 
-  method set_keep_center_on_resize (Int() $value) is also<set-keep-center-on-resize> {
+  method set_keep_center_on_resize (Int() $value)
+    is also<set-keep-center-on-resize>
+  {
     my gboolean $v = $value.so.Int;
 
     champlain_view_set_keep_center_on_resize($!cv, $v);
@@ -630,7 +661,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_set_kinetic_mode($!cv, $k);
   }
 
-  method set_map_source (ChamplainMapSource() $map_source) is also<set-map-source> {
+  method set_map_source (ChamplainMapSource() $map_source)
+    is also<set-map-source>
+  {
     champlain_view_set_map_source($!cv, $map_source);
   }
 
@@ -656,7 +689,9 @@ class Champlain::View is Clutter::Actor {
     champlain_view_set_zoom_level($!cv, $z);
   }
 
-  method set_zoom_on_double_click (Num() $value) is also<set-zoom-on-double-click> {
+  method set_zoom_on_double_click (Num() $value)
+    is also<set-zoom-on-double-click>
+  {
     my gboolean $v = $value.so.Int;
 
     champlain_view_set_zoom_on_double_click($!cv, $v);
@@ -682,6 +717,13 @@ class Champlain::View is Clutter::Actor {
     my gdouble $yy = $y;
 
     champlain_view_y_to_latitude($!cv, $yy);
+  }
+
+  method positionToLocation (Num() $x, Num() $y) {
+    (
+      self.y_to_latitude($y),
+      self.x_to_longitude($x)
+    ).Array;
   }
 
   method zoom_in is also<zoom-in> {
