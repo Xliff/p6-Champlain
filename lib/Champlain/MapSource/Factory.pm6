@@ -3,17 +3,17 @@ use v6.c;
 use Method::Also;
 
 use Champlain::Raw::Types;
-use Champlain::Raw::MapSourceFactory;
+use Champlain::Raw::MapSource::Factory;
 
 use GLib::GList;
-#use Champlain::MapSourceDesc;
+use Champlain::MapSource::Desc;
 
 use GLib::Roles::Object;
 
 our subset ChamplainMapSourceFactoryAncestry is export of Mu
   where ChamplainMapSourceFactory | GObject;
 
-class Champlain::MapSourceFactory {
+class Champlain::MapSource::Factory {
   also does GLib::Roles::Object;
 
   has ChamplainMapSourceFactory $!cmsf is implementor;
@@ -27,7 +27,7 @@ class Champlain::MapSourceFactory {
 
     $!cmsf = do {
       when ChamplainMapSourceFactory {
-        $to-parent = cast(GObject, $to-parent);
+        $to-parent = cast(GObject, $_);
         $_;
       }
 
@@ -52,7 +52,7 @@ class Champlain::MapSourceFactory {
   }
 
   # Is originally: dup_default
-  method new_default (Champlain::MapSourceFactory:U: :$raw = False)
+  method new_default (Champlain::MapSource::Factory:U: :$raw = False)
     is also<
       new-default
       dup-default
@@ -60,6 +60,8 @@ class Champlain::MapSourceFactory {
     >
   {
     my $factory = champlain_map_source_factory_dup_default();
+
+    say "F: { $factory }";
 
     $factory ?? self.bless( :$factory ) !! Nil;
   }
@@ -90,7 +92,7 @@ class Champlain::MapSourceFactory {
       $glist,
       $raw,
       ChamplainMapSourceDesc,
-      Champlain::MapSourceDesc
+      Champlain::MapSource::Desc
     );
   }
 
@@ -106,7 +108,7 @@ class Champlain::MapSourceFactory {
   }
 
   method register (
-    Champlain::MapSourceFactory:U:
+    Champlain::MapSource::Factory:U:
     ChamplainMapSourceDesc() $desc
   ) {
     champlain_map_source_factory_register($!cmsf, $desc);

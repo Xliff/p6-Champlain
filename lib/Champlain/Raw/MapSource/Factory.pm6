@@ -6,7 +6,7 @@ use GLib::Raw::Definitions;
 use GLib::Raw::Structs;
 use Champlain::Raw::Definitions;
 
-unit package Champlain::Raw::MapSourceFactory;
+unit package Champlain::Raw::MapSource::Factory;
 
 ### /usr/include/champlain-0.12/champlain/champlain-map-source-factory.h
 
