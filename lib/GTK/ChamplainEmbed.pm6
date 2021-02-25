@@ -1,19 +1,21 @@
 use v6.c;
 
+use Method::Also;
+
 use NativeCall;
 
 use GTK::Raw::Definitions;
 use Champlain::Raw::Types;
 
-use GTK::Widget;
+use GTK::Bin;
 use Champlain::View;
 
 use GLib::Roles::Object;
 
 our subset GtkChamplainEmbedAncestry is export of Mu
-  where GtkChamplainEmbed | GtkWidgetAncestry;
+  where GtkChamplainEmbed | BinAncestry;
 
-class GTK::ChamplainEmbed {
+class GTK::ChamplainEmbed is GTK::Bin {
   also does GLib::Roles::Object;
 
   has GtkChamplainEmbed $!gce;
@@ -27,7 +29,7 @@ class GTK::ChamplainEmbed {
 
     $!gce = do {
       when GtkChamplainEmbed {
-        $to-parent = cast(GtkWidget, $_);
+        $to-parent = cast(GtkBin, $_);
         $_;
       }
 
@@ -36,10 +38,11 @@ class GTK::ChamplainEmbed {
         cast(GtkChamplainEmbed, $_);
       }
     }
-    self.setWidget($to-parent);
+    self.setBin($to-parent);
   }
 
   method Champlain::Raw::Definitions::GtkChamplainEmbed
+    is also<GtkChamplainEmbed>
   { $!gce }
 
 
@@ -49,7 +52,7 @@ class GTK::ChamplainEmbed {
     $embed ?? self.bless( :$embed ) !! Nil;
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type(
@@ -60,7 +63,12 @@ class GTK::ChamplainEmbed {
     );
   }
 
-  method get_view (:$raw = False) {
+  method get_view (:$raw = False)
+    is also<
+      get-view
+      view
+    >
+  {
     my $v = gtk_champlain_embed_get_view($!gce);
 
     $v ??
