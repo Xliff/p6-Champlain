@@ -1,6 +1,6 @@
 {
     "depends": [
-	    "p6-Clutter",
+	    "p6-Clutter"
     ],
     "description": "Perl6 library bindings for GNOME's libchamplain library",
     "version": "r0.0.1",
@@ -13,6 +13,8 @@
       "Champlain::Raw::Label"                 :  "lib/Champlain/Raw/Label.pm6"                 ,
       "Champlain::Raw::License"               :  "lib/Champlain/Raw/License.pm6"               ,
       "Champlain::Raw::MapSource"             :  "lib/Champlain/Raw/MapSource.pm6"             ,
+      "Champlain::Raw::MapSource::Desc"       :  "lib/Champlain/Raw/MapSource/Desc.pm6"        ,
+      "Champlain::Raw::MapSource::Factory"    :  "lib/Champlain/Raw/MapSource/Factory.pm6"     ,
       "Champlain::Raw::Marker"                :  "lib/Champlain/Raw/Marker.pm6"                ,
       "Champlain::Raw::MarkerLayer"           :  "lib/Champlain/Raw/MarkerLayer.pm6"           ,
       "Champlain::Raw::MemphisRenderer"       :  "lib/Champlain/Raw/MemphisRenderer.pm6"       ,
@@ -32,10 +34,14 @@
       "Champlain::Tile"                       :  "lib/Champlain/Tile.pm6"                      ,
       "Champlain::BoundingBox"                :  "lib/Champlain/BoundingBox.pm6"               ,
       "Champlain::Coordinate"                 :  "lib/Champlain/Coordinate.pm6"                ,
-      "Champlain::FileCache"                  :  "lib/Champlain/FileCache.pm6"                 ,
+      "Champlain::Enums"                      :  "lib/Champlain/Enums.pm6"                     ,
+      "Champlain::ImageRenderer"              :  "lib/Champlain/ImageRenderer.pm6"             ,
       "Champlain::Layer"                      :  "lib/Champlain/Layer.pm6"                     ,
       "Champlain::License"                    :  "lib/Champlain/License.pm6"                   ,
       "Champlain::MapSource"                  :  "lib/Champlain/MapSource.pm6"                 ,
+      "Champlain::MapSource::Chain"           :  "lib/Champlain/MapSource/Chain.pm6"           ,
+      "Champlain::MapSource::Desc"            :  "lib/Champlain/MapSource/Desc.pm6"            ,
+      "Champlain::MapSource::Factory"         :  "lib/Champlain/MapSource/Factory.pm6"         ,
       "Champlain::Marker"                     :  "lib/Champlain/Marker.pm6"                    ,
       "Champlain::MarkerLayer"                :  "lib/Champlain/MarkerLayer.pm6"               ,
       "Champlain::MemphisRenderer"            :  "lib/Champlain/MemphisRenderer.pm6"           ,
@@ -45,12 +51,13 @@
       "Champlain::TileSource"                 :  "lib/Champlain/TileSource.pm6"                ,
       "Champlain::View"                       :  "lib/Champlain/View.pm6"                      ,
       "GTK::ChamplainEmbed"                   :  "lib/GTK/ChamplainEmbed.pm6"                  ,
+      "Champlain::FileCache"                  :  "lib/Champlain/FileCache.pm6"                 ,
       "Champlain::FileTileSource"             :  "lib/Champlain/FileTileSource.pm6"            ,
       "Champlain::Label"                      :  "lib/Champlain/Label.pm6"                     ,
       "Champlain::MemoryTileCache"            :  "lib/Champlain/MemoryTileCache.pm6"           ,
       "Champlain::NetworkBboxTileSource"      :  "lib/Champlain/NetworkBboxTileSource.pm6"     ,
       "Champlain::NetworkTileSource"          :  "lib/Champlain/NetworkTileSource.pm6"         ,
-      "Champlain::NullTileSource"             :  "lib/Champlain/NullTileSource.pm6"            
+      "Champlain::NullTileSource"             :  "lib/Champlain/NullTileSource.pm6"
     },
     "name": "Perl6-Champlain",
     "perl": "6.c",
