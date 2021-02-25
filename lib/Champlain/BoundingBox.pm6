@@ -38,7 +38,10 @@ augment class ChamplainBoundingBox {
   }
 
   proto method get_center (|)
-      is also<get-center>
+    is also<
+      get-center
+      center
+    >
   { * }
 
   multi method get_center {
