@@ -22,7 +22,7 @@ class Champlain::MapSource::Desc {
 
     $!cmsd = do {
       when ChamplainMapSourceDesc {
-        $to-parent = cast(GObject, $to-parent);
+        $to-parent = cast(GObject, $_);
         $_;
       }
 
@@ -71,7 +71,7 @@ class Champlain::MapSource::Desc {
       $t,
       $p,
       $uri_format,
-      $constructor,
+      &constructor,
       $data
     );
 
@@ -300,7 +300,7 @@ class Champlain::MapSource::Desc {
   }
 
   method get_type {
-    state ($n, $t)
+    state ($n, $t);
 
     unstable_get_type(
       self.^name,
