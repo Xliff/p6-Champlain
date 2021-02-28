@@ -138,7 +138,9 @@ class Champlain::MapSource {
     Int() $zoom_level,
     Num() $latitude,
     Num() $longitude
-  ) is also<get-meters-per-pixel> {
+  )
+    is also<get-meters-per-pixel>
+  {
     my guint   $z            = $zoom_level;
     my gdouble ($lat, $long) = ($latitude, $longitude);
 
@@ -191,8 +193,8 @@ class Champlain::MapSource {
     state ($n, $t);
 
     unstable_get_type(
-      self.^name.
-      champlain_map_source_get_type,
+      self.^name,
+      &champlain_map_source_get_type,
       $n,
       $t
     );
@@ -212,7 +214,9 @@ class Champlain::MapSource {
     champlain_map_source_get_y($!cms, $z, $l);
   }
 
-  method set_next_source (ChamplainMapSource() $next_source) is also<set-next-source> {
+  method set_next_source (ChamplainMapSource() $next_source)
+    is also<set-next-source>
+  {
     champlain_map_source_set_next_source($!cms, $next_source);
   }
 
