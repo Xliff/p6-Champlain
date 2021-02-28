@@ -26,7 +26,7 @@ class Champlain::Renderer {
 
     $!cr = do {
       when ChamplainRenderer {
-        $to-parent = cast(GObject, $to-parent);
+        $to-parent = cast(GObject, $_);
         $_;
       }
 
@@ -39,6 +39,7 @@ class Champlain::Renderer {
   }
 
   method Champlain::Raw::Definitions::ChamplainRenderer
+    is also<ChamplainRenderer>
   { $!cr }
 
   method new (ChamplainRendererAncestry $renderer, :$ref = True) {
