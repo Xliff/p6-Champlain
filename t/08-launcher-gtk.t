@@ -4,11 +4,12 @@ use Clutter::Raw::Structs;
 use GTK::Raw::Types;
 use Champlain::Raw::Types;
 
+use Champlain::MapSource::Factory;
 use GTK::Application;
 use GTK::Box;
 use GTK::Button;
 use GTK::ComboBox;
-use GTK::CellRenderer;
+use GTK::CellRendererText;
 use GTK::Frame;
 use GTK::Image;
 use GTK::SpinButton;
@@ -19,7 +20,6 @@ use GTK::ChamplainEmbed;
 use GTK::Clutter::Main;
 use GTK::Window;
 use Champlain::Coordinate;
-use Champlain::MapSource::Factory;
 use Champlain::Scale;
 use Champlain::View;
 
@@ -36,7 +36,10 @@ sub build-combo-box ($box) {
   for $factory.get-registered[] {
     my $parent = $store.append;
 
+    say "{ .id // 'NIL-id' } => { .name // 'NIL-name' }";
+
     $store.set(
+      $parent,
       COL_ID   => .id,
       COL_NAME => .name
     );
@@ -45,7 +48,7 @@ sub build-combo-box ($box) {
   $box.model = $store;
   my $cell = GTK::CellRendererText.new;
   $box.layout_pack_start($cell);
-  $box.set-attribute($cell, 'text', COL_NAME);
+  $box.set_attribute($cell, 'text', COL_NAME);
 }
 
 sub append-point ($l, $lon, $lat) {
@@ -132,6 +135,18 @@ sub MAIN {
     ( my $w-button = GTK::ToggleButton.new-with-label('Toggle Wrap') );
   $w-button.toggled.tap(-> *@a { $view.horizontal-wrap .= not });
 
+  .active = True, build-combo-box($_) given (my $c-button = GTK::ComboBox.new);
+  $c-button.changed.tap(-> *@a {
+    if $c-button.get-active-iter -> $iter {
+      my $id = $c-button.model.get($iter, COL_ID);
+
+      say "New Source: $id";
+
+      $view.map-source =
+        Champlain::MapSource::Factory.new-default.create-cached-source($id);
+    }
+  });
+
   my $zl-spin = GTK::SpinButton.new-with-range(0, 20, 1);
   $zl-spin.value = $view.zoom-level;
   $zl-spin.changed.tap(-> *@a {
@@ -141,9 +156,8 @@ sub MAIN {
     $zl-spin.value = $view.zoom-level;
   });
 
-  $bbox.add($_) for $zi-button, $zo-button, $m-button, $w-button, $zl-spin;
-
-
+  $bbox.add($_) for $zi-button, $zo-button, $m-button, $w-button, $c-button,
+                    $zl-spin;
 
   my $viewport = GTK::Frame.new;
   $viewport.add($widget);
