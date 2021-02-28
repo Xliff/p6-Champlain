@@ -6,6 +6,7 @@ use Champlain::Raw::Types;
 use Champlain::Raw::MapSource::Factory;
 
 use GLib::GList;
+use Champlain::MapSource;
 use Champlain::MapSource::Desc;
 
 use GLib::Roles::Object;
@@ -61,30 +62,60 @@ class Champlain::MapSource::Factory {
   {
     my $factory = champlain_map_source_factory_dup_default();
 
-    say "F: { $factory }";
-
     $factory ?? self.bless( :$factory ) !! Nil;
   }
 
-  method create (Str() $id) {
-    champlain_map_source_factory_create($!cmsf, $id);
+  method create (Str() $id, :$raw = False) {
+    my $ms = champlain_map_source_factory_create($!cmsf, $id);
+
+    # Transfer: none
+    $ms ??
+      ( $raw ?? $ms !! Champlain::MapSource.new($ms) )
+      !!
+      Nil
   }
 
-  method create_cached_source (Str() $id) is also<create-cached-source> {
-    champlain_map_source_factory_create_cached_source($!cmsf, $id);
+  method create_cached_source (Str() $id, :$raw = False)
+    is also<create-cached-source>
+  {
+    my $ms = champlain_map_source_factory_create_cached_source($!cmsf, $id);
+
+    # Transfer: none
+    $ms ??
+      ( $raw ?? $ms !! Champlain::MapSource.new($ms) )
+      !!
+      Nil
   }
 
-  method create_error_source (Int() $tile_size) is also<create-error-source> {
-    my guint $t = $tile_size;
+  method create_error_source (Int() $tile_size, :$raw = False)
+    is also<create-error-source>
+  {
+    my guint $t  = $tile_size;
+    my       $ms = champlain_map_source_factory_create_error_source($!cmsf, $t);
 
-    champlain_map_source_factory_create_error_source($!cmsf, $t);
+    # Transfer: none
+    $ms ??
+      ( $raw ?? $ms !! Champlain::MapSource.new($ms) )
+      !!
+      Nil
+
   }
 
-  method create_memcached_source (Str() $id) is also<create-memcached-source> {
-    champlain_map_source_factory_create_memcached_source($!cmsf, $id);
+  method create_memcached_source (Str() $id, :$raw = False)
+    is also<create-memcached-source>
+  {
+    my $ms = champlain_map_source_factory_create_memcached_source($!cmsf, $id);
+
+    # Transfer: none
+    $ms ??
+      ( $raw ?? $ms !! Champlain::MapSource.new($ms) )
+      !!
+      Nil
   }
 
-  method get_registered (:$glist = False, :$raw = False) is also<get-registered> {
+  method get_registered (:$glist = False, :$raw = False)
+    is also<get-registered>
+  {
     # cw: GSList is binary compatible with GList, so we use the GList
     #     type
     returnGList(
