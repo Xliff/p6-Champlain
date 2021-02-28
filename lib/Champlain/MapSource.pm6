@@ -5,6 +5,8 @@ use Method::Also;
 use Champlain::Raw::Types;
 use Champlain::Raw::MapSource;
 
+use Champlain::Renderer;
+
 use GLib::Roles::Object;
 
 our subset ChamplainMapSourceAncestry is export of Mu
@@ -80,8 +82,11 @@ class Champlain::MapSource {
           self.prop_get('renderer', $gv)
         );
 
+        my $o = $gv.object;
+        say "C::R.renderer = $o";
+
         propReturnObject(
-          $gv.object,
+          $o,
           $raw,
           ChamplainRenderer,
           Champlain::Renderer
