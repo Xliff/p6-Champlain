@@ -109,7 +109,12 @@ class Champlain::MapSource {
     champlain_map_source_get_column_count($!cms, $z);
   }
 
-  method get_id is also<get-id> {
+  method get_id
+    is also<
+      get-id
+      id
+    >
+  {
     champlain_map_source_get_id($!cms);
   }
 
@@ -120,11 +125,22 @@ class Champlain::MapSource {
     champlain_map_source_get_latitude($!cms, $z, $y);
   }
 
-  method get_license is also<get-license> {
+  method get_license
+    is also<
+      get-license
+      license
+    >
+  {
     champlain_map_source_get_license($!cms);
   }
 
-  method get_license_uri is also<get-license-uri> {
+  method get_license_uri
+    is also<
+      get-license-uri
+      license_uri
+      license-uri
+    >
+  {
     champlain_map_source_get_license_uri($!cms);
   }
 
@@ -135,7 +151,13 @@ class Champlain::MapSource {
     champlain_map_source_get_longitude($!cms, $z, $xx);
   }
 
-  method get_max_zoom_level is also<get-max-zoom-level> {
+  method get_max_zoom_level
+    is also<
+      get-max-zoom-level
+      max_zoom_level
+      max-zoom-level
+    >
+  {
     champlain_map_source_get_max_zoom_level($!cms);
   }
 
@@ -152,11 +174,32 @@ class Champlain::MapSource {
     champlain_map_source_get_meters_per_pixel($!cms, $z, $lat, $long);
   }
 
-  method get_min_zoom_level is also<get-min-zoom-level> {
+  method get_min_zoom_level
+    is also<
+      get-min-zoom-level
+      min_zoom_level
+      min-zoom-level
+    >
+  {
     champlain_map_source_get_min_zoom_level($!cms);
   }
 
-  method get_name is also<get-name> {
+  method getZoomLevels
+    is also<
+      getZoomRange
+      zoomLevels
+      zoomRange
+    >
+  {
+    self.get_min_zoom_level .. self.get_max_zoom_level;
+  }
+
+  method get_name
+    is also<
+      get-name
+      name
+    >
+  {
     champlain_map_source_get_name($!cms);
   }
 
@@ -170,12 +213,18 @@ class Champlain::MapSource {
       Nil;
   }
 
-  method get_projection is also<get-projection> {
+  method get_projection
+    is also<
+      get-projection
+      projection
+    >
+  {
     champlain_map_source_get_projection($!cms);
   }
 
   # Transfer: none
-  method get_renderer (:$raw = False) is also<get-renderer> {
+  method get_renderer (:$raw = False) is also<get-renderer>
+  {
     my $r = champlain_map_source_get_renderer($!cms);
 
     $r ??
@@ -190,7 +239,13 @@ class Champlain::MapSource {
     champlain_map_source_get_row_count($!cms, $z);
   }
 
-  method get_tile_size is also<get-tile-size> {
+  method get_tile_size
+    is also<
+      get-tile-size
+      tile_size
+      tile-size
+    >
+  {
     champlain_map_source_get_tile_size($!cms);
   }
 
