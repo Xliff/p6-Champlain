@@ -21,7 +21,7 @@ class Champlain::ImageRenderer is Champlain::Renderer {
 
     $!cir = do {
       when ChamplainImageRenderer {
-        $to-parent = cast(ChamplainRenderer, $to-parent);
+        $to-parent = cast(ChamplainRenderer, $_);
         $_;
       }
 
