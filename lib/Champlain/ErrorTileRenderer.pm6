@@ -4,6 +4,8 @@ use NativeCall;
 
 use Champlain::Raw::Types;
 
+use Champlain::Renderer;
+
 our subset ChamplainErrorTileRendererAncestry is export of Mu
   where ChamplainErrorTileRenderer | ChamplainRendererAncestry;
 
@@ -44,8 +46,9 @@ class Champlain::ErrorTileRenderer is Champlain::Renderer {
     $o.ref if $ref;
     $o;
   }
-  multi method new {
-    my $error-tiles = champlain_error_tile_renderer_new();
+  multi method new (Int() $tile-size) {
+    my guint32 $ts          = $tile-size; 
+    my         $error-tiles = champlain_error_tile_renderer_new($ts);
 
     $error-tiles ?? self.bless( :$error-tiles ) !! Nil;
   }
@@ -55,15 +58,14 @@ class Champlain::ErrorTileRenderer is Champlain::Renderer {
   }
 
   method get_type {
-    unstable_get_type(
-      state ($n, $t);
+    state ($n, $t);
 
-      unstable_get_type(
-        self.^name,
-        champlain_error_tile_renderer_get_type,
-        $n,
-        $t
-      );
+    unstable_get_type(
+      self.^name,
+      champlain_error_tile_renderer_get_type,
+      $n,
+      $t
+    );
   }
 
   method set_tile_size (Int() $size) {
@@ -76,8 +78,8 @@ class Champlain::ErrorTileRenderer is Champlain::Renderer {
 ### /usr/include/champlain-0.12/champlain/champlain-error-tile-renderer.h
 
 sub champlain_error_tile_renderer_get_tile_size (
-  ChamplainErrorTileRenderer $renderer)
-(
+  ChamplainErrorTileRenderer $renderer
+) 
   returns guint
   is native(champlain)
   is export
