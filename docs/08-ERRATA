@@ -1,0 +1,9 @@
+t/08-local-rendering.t
+----------------------
+
+First, ensure Memphis support is enabled in libchamplain, as this is behavior
+is no longer the default.
+
+Changing the rule displayed on the right after the mapsource has changed doesn't
+seem to do anything. Many GTK error messages are emitted regarding the fact
+that the Champlain::MemphisRender may not be correctly initialized.
