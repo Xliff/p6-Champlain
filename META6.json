@@ -35,6 +35,7 @@
       "Champlain::BoundingBox"                :  "lib/Champlain/BoundingBox.pm6"               ,
       "Champlain::Coordinate"                 :  "lib/Champlain/Coordinate.pm6"                ,
       "Champlain::Enums"                      :  "lib/Champlain/Enums.pm6"                     ,
+      "Champlain::ErrorTileRenderer"          :  "lib/Champlain/ErrorTileRenderer.pm6"         ,
       "Champlain::ImageRenderer"              :  "lib/Champlain/ImageRenderer.pm6"             ,
       "Champlain::Layer"                      :  "lib/Champlain/Layer.pm6"                     ,
       "Champlain::License"                    :  "lib/Champlain/License.pm6"                   ,
@@ -54,10 +55,10 @@
       "Champlain::FileCache"                  :  "lib/Champlain/FileCache.pm6"                 ,
       "Champlain::FileTileSource"             :  "lib/Champlain/FileTileSource.pm6"            ,
       "Champlain::Label"                      :  "lib/Champlain/Label.pm6"                     ,
-      "Champlain::MemoryTileCache"            :  "lib/Champlain/MemoryTileCache.pm6"           ,
+      "Champlain::MemoryCache"                :  "lib/Champlain/MemoryCache.pm6"               ,
       "Champlain::NetworkBboxTileSource"      :  "lib/Champlain/NetworkBboxTileSource.pm6"     ,
       "Champlain::NetworkTileSource"          :  "lib/Champlain/NetworkTileSource.pm6"         ,
-      "Champlain::NullTileSource"             :  "lib/Champlain/NullTileSource.pm6"
+      "Champlain::NullTileSource"             :  "lib/Champlain/NullTileSource.pm6"            
     },
     "name": "Perl6-Champlain",
     "perl": "6.c",
