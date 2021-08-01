@@ -1,0 +1,1572 @@
+ === COGL::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.451
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.023
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+COGL::Raw::Exports compile time: 8.11392026
+ === COGL::Compat::Types === 
+Stage start      :   0.000
+Stage parse      :   7.124
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+COGL::Compat::Types compile time: 8.67898982
+ === Clutter::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.989
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.026
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Clutter::Raw::Exports compile time: 8.8182771
+ === Cairo === 
+Stage start      :   0.000
+Stage parse      :   7.368
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.033
+Stage mbc        :   0.018
+Stage moar       :   0.000
+
+Cairo compile time: 8.9780567
+ === ATK::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   7.575
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.029
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ATK::Raw::Exports compile time: 9.1505498
+ === ATK::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   7.682
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.010
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+ATK::Raw::Enums compile time: 9.2192151
+ === COGL::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   7.537
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.010
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+COGL::Raw::Enums compile time: 9.20938266
+ === ATK::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   8.092
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+ATK::Raw::Definitions compile time: 9.4383898
+ === Clutter::Raw::Exceptions === 
+Stage start      :   0.000
+Stage parse      :   7.457
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.025
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Clutter::Raw::Exceptions compile time: 9.324247
+ === GIO::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   7.308
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.017
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+GIO::Raw::Enums compile time: 9.27489178
+ === GIO::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   7.447
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.018
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GIO::Raw::Definitions compile time: 9.41070029
+ === Clutter::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   7.930
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Clutter::Raw::Structs compile time: 9.61553869
+ === COGL::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   8.324
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+COGL::Raw::Structs compile time: 9.87698918
+ === ATK::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   8.425
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.009
+Stage mbc        :   0.016
+Stage moar       :   0.000
+
+ATK::Raw::Structs compile time: 9.98900147
+ === COGL::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   8.224
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.018
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+COGL::Raw::Definitions compile time: 10.0116073
+ === Clutter::Raw::Enums === 
+Stage start      :   0.001
+Stage parse      :   8.296
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.028
+Stage mast       :   0.034
+Stage mbc        :   0.006
+Stage moar       :   0.000
+
+Clutter::Raw::Enums compile time: 10.08566989
+ === Clutter::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   8.212
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.008
+Stage mast       :   0.016
+Stage mbc        :   0.011
+Stage moar       :   0.000
+
+Clutter::Raw::Definitions compile time: 10.1234391
+ === GIO::DBus::Raw::Types === 
+Stage start      :   0.000
+Stage parse      :   8.790
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.008
+Stage mast       :   0.022
+Stage mbc        :   0.076
+Stage moar       :   0.000
+
+GIO::DBus::Raw::Types compile time: 10.78300211
+ === Clutter::Color === 
+Stage start      :   0.000
+Stage parse      :  11.672
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.007
+Stage mbc        :   0.024
+Stage moar       :   0.000
+
+Clutter::Color compile time: 13.40147866
+ === Clutter::Actor === 
+Stage start      :   0.000
+Stage parse      :  15.874
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.046
+Stage moar       :   0.000
+
+Clutter::Actor compile time: 17.63688397
+ === GIO::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   7.363
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.024
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIO::Raw::Exports compile time: 9.7231821
+ === GLib::Raw::Exceptions === 
+Stage start      :   0.000
+Stage parse      :   7.192
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.033
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Exceptions compile time: 9.34008883
+ === GLib::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.999
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Exports compile time: 9.27865702
+ === GLib::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   8.389
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.008
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Raw::Definitions compile time: 10.3618394
+ === GIO::Raw::Subs === 
+Stage start      :   0.000
+Stage parse      :   8.623
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.023
+Stage moar       :   0.000
+
+GIO::Raw::Subs compile time: 10.5352297
+ === GLib::Raw::Struct_Subs === 
+Stage start      :   0.000
+Stage parse      :   7.815
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Raw::Struct_Subs compile time: 9.953779
+ === GLib::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   8.214
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.009
+Stage mast       :   0.028
+Stage mbc        :   0.009
+Stage moar       :   0.000
+
+GLib::Raw::Enums compile time: 10.4252109
+ === GIO::Raw::Quarks === 
+Stage start      :   0.000
+Stage parse      :   8.487
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.007
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GIO::Raw::Quarks compile time: 11.02677786
+ === GIO::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   8.916
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.017
+Stage mast       :   0.004
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GIO::Raw::Structs compile time: 10.80632806
+ === GLib::Roles::ListData === 
+Stage start      :   0.000
+Stage parse      :   8.544
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Roles::ListData compile time: 10.33369293
+ === GLib::Raw::Object === 
+Stage start      :   0.000
+Stage parse      :   8.596
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Raw::Object compile time: 10.829747
+ === GLib::Roles::Pointers === 
+Stage start      :   0.000
+Stage parse      :   8.300
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Roles::Pointers compile time: 10.32197683
+ === GLib::Raw::Subs === 
+Stage start      :   0.000
+Stage parse      :   8.356
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.009
+Stage mbc        :   0.010
+Stage moar       :   0.000
+
+GLib::Raw::Subs compile time: 10.63167821
+ === GLib::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   8.749
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.006
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GLib::Raw::Structs compile time: 10.9788378
+ === GLib::GList === 
+Stage start      :   0.000
+Stage parse      :   9.540
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+GLib::GList compile time: 11.7529879
+ === GLib::Roles::Object === 
+Stage start      :   0.000
+Stage parse      :   9.278
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.008
+Stage moar       :   0.000
+
+GLib::Roles::Object compile time: 11.32336742
+ === GLib::Roles::StaticClass === 
+Stage start      :   0.000
+Stage parse      :   8.611
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.024
+Stage moar       :   0.000
+
+GLib::Roles::StaticClass compile time: 11.11587763
+ === GLib::Value === 
+Stage start      :   0.000
+Stage parse      :   8.637
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+GLib::Value compile time: 10.58605286
+ === Method::Also === 
+Stage start      :   0.000
+Stage parse      :   4.699
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Method::Also compile time: 6.66844262
+ === Pango::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   3.985
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Pango::Raw::Exports compile time: 5.85505434
+ === GTK::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   5.567
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.009
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GTK::Raw::Definitions compile time: 7.83646797
+ === JSON::GLib::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   4.987
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.011
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+JSON::GLib::Raw::Exports compile time: 6.93448422
+ === JSON::GLib::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   5.862
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+JSON::GLib::Raw::Definitions compile time: 8.00371635
+ === Pango::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   4.692
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Pango::Raw::Enums compile time: 6.69695539
+ === Pango::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   4.828
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+Pango::Raw::Structs compile time: 6.60644198
+ === NativeHelpers::Blob === 
+Stage start      :   0.000
+Stage parse      :   5.344
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+NativeHelpers::Blob compile time: 7.3386432
+ === Pango::Raw::Subs === 
+Stage start      :   0.000
+Stage parse      :   5.331
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Pango::Raw::Subs compile time: 7.10558285
+ === Pango::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   5.468
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Pango::Raw::Definitions compile time: 7.3362099
+ === GTK::Bin === 
+Stage start      :   0.000
+Stage parse      :  11.820
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.014
+Stage moar       :   0.000
+
+GTK::Bin compile time: 13.91558938
+ === Champlain::Raw::Definitions === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.691
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.033
+    Stage mast       :   0.064
+    Stage mbc        :   0.008
+Stage parse      :   8.207
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::Definitions compile time: 9.76787635
+ === Champlain::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.221
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.019
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::Exports compile time: 7.88535885
+ === Champlain::Raw::Scale === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Scale.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.751
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.159
+    Stage mbc        :   0.022
+Stage parse      :  15.569
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+Champlain::Raw::Scale compile time: 17.319654
+ === Champlain::Raw::FileCache === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/FileCache.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.525
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.072
+    Stage mbc        :   0.013
+Stage parse      :  16.319
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.009
+Stage mbc        :   0.006
+Stage moar       :   0.000
+
+Champlain::Raw::FileCache compile time: 17.69719066
+ === Champlain::Raw::License === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/License.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.292
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.075
+    Stage mast       :   0.152
+    Stage mbc        :   0.043
+Stage parse      :  16.391
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::License compile time: 17.8552983
+ === Champlain::Raw::TileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/TileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.315
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.105
+    Stage mbc        :   0.014
+Stage parse      :  16.763
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.005
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+Champlain::Raw::TileSource compile time: 18.3998157
+ === Champlain::Raw::BoundingBox === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/BoundingBox.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.216
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.041
+    Stage mast       :   0.146
+    Stage mbc        :   0.014
+Stage parse      :  17.132
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.007
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+Champlain::Raw::BoundingBox compile time: 18.7011763
+ === Champlain::Raw::NetworkBboxTileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/NetworkBboxTileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.085
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.123
+    Stage mbc        :   0.014
+Stage parse      :  17.063
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::NetworkBboxTileSource compile time: 18.60523622
+ === Champlain::Raw::MapSource::Desc === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/MapSource/Desc.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.205
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.106
+    Stage mbc        :   0.024
+Stage parse      :  17.307
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::Raw::MapSource::Desc compile time: 18.70271795
+ === Champlain::Raw::NetworkTileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/NetworkTileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.624
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.031
+    Stage mast       :   0.085
+    Stage mbc        :   0.038
+Stage parse      :  17.128
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+Champlain::Raw::NetworkTileSource compile time: 18.8676659
+ === Champlain::Raw::MapSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/MapSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.740
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.045
+    Stage mast       :   0.151
+    Stage mbc        :   0.032
+Stage parse      :  17.566
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::MapSource compile time: 18.9602857
+ === Champlain::Raw::MapSource::Factory === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/MapSource/Factory.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.427
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.075
+    Stage mbc        :   0.021
+Stage parse      :  17.317
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::MapSource::Factory compile time: 19.0032371
+ === Champlain::Raw::Point === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Point.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.806
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.061
+    Stage mbc        :   0.016
+Stage parse      :  17.575
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::Point compile time: 19.10606438
+ === Champlain::Raw::Marker === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Marker.pm6
+    Stage start      :   0.000
+    Stage parse      :  10.106
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.206
+    Stage mbc        :   0.033
+Stage parse      :  17.750
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::Marker compile time: 19.3741018
+ === Champlain::Raw::MemphisRenderer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/MemphisRenderer.pm6
+    Stage start      :   0.001
+    Stage parse      :  10.307
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.085
+    Stage mbc        :   0.138
+Stage parse      :  18.030
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::MemphisRenderer compile time: 19.58392166
+ === Champlain::Raw::MarkerLayer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/MarkerLayer.pm6
+    Stage start      :   0.000
+    Stage parse      :  10.551
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.057
+    Stage mbc        :   0.020
+Stage parse      :  18.175
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::MarkerLayer compile time: 19.92541926
+ === Champlain::Raw::PathLayer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/PathLayer.pm6
+    Stage start      :   0.000
+    Stage parse      :  10.565
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.075
+    Stage mbc        :   0.098
+Stage parse      :  18.077
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::Raw::PathLayer compile time: 19.86162355
+ === Champlain::Raw::Tile === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Tile.pm6
+    Stage start      :   0.000
+    Stage parse      :  10.582
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.074
+    Stage mbc        :   0.030
+Stage parse      :  18.282
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::Tile compile time: 19.9955917
+ === Champlain::Raw::Label === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Label.pm6
+    Stage start      :   0.000
+    Stage parse      :  11.434
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.102
+    Stage mbc        :   0.053
+Stage parse      :  18.875
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Raw::Label compile time: 20.2835264
+ === Champlain::Raw::Types === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/Types.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.760
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.024
+    Stage mbc        :   0.006
+Stage parse      :  14.353
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.010
+Stage mast       :   0.025
+Stage mbc        :   0.024
+Stage moar       :   0.000
+
+Champlain::Raw::Types compile time: 16.44130739
+ === Champlain::Raw::View === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Raw/View.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.630
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.040
+    Stage mast       :   0.154
+    Stage mbc        :   0.074
+Stage parse      :  14.512
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::Raw::View compile time: 16.5733709
+ === Champlain::BoundingBox === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/BoundingBox.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.449
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.045
+    Stage mbc        :   0.021
+Stage parse      :   7.231
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::BoundingBox compile time: 7.96109466
+ === Champlain::Roles::Location === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Roles/Location.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.143
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.058
+    Stage mbc        :   0.032
+Stage parse      :   8.846
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.012
+Stage moar       :   0.000
+
+Champlain::Roles::Location compile time: 9.51694822
+ === Champlain::Renderer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Renderer.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.091
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.055
+    Stage mbc        :   0.019
+Stage parse      :   8.920
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.013
+Stage moar       :   0.000
+
+Champlain::Renderer compile time: 9.58337306
+ === Champlain::Scale === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Scale.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.807
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.119
+    Stage mbc        :   0.056
+Stage parse      :  14.733
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+Champlain::Scale compile time: 15.46380749
+ === Champlain::Tile === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Tile.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.900
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.072
+    Stage mast       :   0.242
+    Stage mbc        :   0.070
+Stage parse      :  14.745
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+Champlain::Tile compile time: 15.4539443
+ === Champlain::ImageRenderer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/ImageRenderer.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.579
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.040
+    Stage mast       :   0.081
+    Stage mbc        :   0.023
+Stage parse      :   9.576
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::ImageRenderer compile time: 10.53693773
+ === Champlain::Enums === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Enums.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.539
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.048
+    Stage mast       :   0.045
+    Stage mbc        :   0.043
+Stage parse      :   9.684
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::Enums compile time: 10.6788649
+ === Champlain::ErrorTileRenderer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/ErrorTileRenderer.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.022
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.043
+    Stage mast       :   0.056
+    Stage mbc        :   0.030
+Stage parse      :  10.070
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::ErrorTileRenderer compile time: 11.02752819
+ === Champlain::MapSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MapSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.067
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.136
+    Stage mast       :   0.163
+    Stage mbc        :   0.076
+Stage parse      :  10.604
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::MapSource compile time: 11.56887731
+ === Champlain::Coordinate === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Coordinate.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.139
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.060
+    Stage mbc        :   0.026
+Stage parse      :  10.816
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Coordinate compile time: 11.74438221
+ === Champlain::Layer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Layer.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.991
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.098
+    Stage mbc        :   0.061
+Stage parse      :  15.208
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+Champlain::Layer compile time: 16.04755149
+ === Champlain::License === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/License.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.712
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.096
+    Stage mbc        :   0.049
+Stage parse      :  15.336
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+Champlain::License compile time: 16.26932838
+ === Champlain::MapSource::Chain === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MapSource/Chain.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.416
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.047
+    Stage mbc        :   0.024
+Stage parse      :   6.987
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::MapSource::Chain compile time: 7.64575795
+ === Champlain::MapSource::Desc === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MapSource/Desc.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.169
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.063
+    Stage mbc        :   0.013
+Stage parse      :   7.721
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.017
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::MapSource::Desc compile time: 8.43229389
+ === Champlain::MapSource::Factory === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MapSource/Factory.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.886
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.108
+    Stage mbc        :   0.015
+Stage parse      :   8.683
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::MapSource::Factory compile time: 9.32147814
+ === Champlain::MarkerLayer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MarkerLayer.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.153
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.028
+    Stage mast       :   0.128
+    Stage mbc        :   0.012
+Stage parse      :   9.487
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::MarkerLayer compile time: 10.14731366
+ === Champlain::MemphisRenderer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MemphisRenderer.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.175
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.063
+    Stage mbc        :   0.022
+Stage parse      :   9.885
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.006
+Stage moar       :   0.000
+
+Champlain::MemphisRenderer compile time: 10.52475725
+ === Champlain::PathLayer === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/PathLayer.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.939
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.099
+    Stage mbc        :   0.022
+Stage parse      :  11.200
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::PathLayer compile time: 11.85463373
+ === Champlain::Marker === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Marker.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.732
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.100
+    Stage mbc        :   0.040
+Stage parse      :  12.894
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Marker compile time: 13.52274355
+ === Champlain::TileCache === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/TileCache.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.173
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.048
+    Stage mbc        :   0.014
+Stage parse      :   6.338
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::TileCache compile time: 6.88545869
+ === Champlain::Point === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Point.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.255
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.112
+    Stage mbc        :   0.011
+Stage parse      :   6.846
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Point compile time: 7.42020275
+ === Champlain::TileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/TileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.053
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.038
+    Stage mast       :   0.107
+    Stage mbc        :   0.017
+Stage parse      :   6.190
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::TileSource compile time: 6.77797581
+ === Champlain::View === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/View.pm6
+    Stage start      :   0.000
+    Stage parse      :   7.500
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.137
+    Stage mbc        :   0.038
+Stage parse      :  11.148
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::View compile time: 11.74497229
+ === Champlain::NetworkTileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/NetworkTileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.144
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.037
+    Stage mast       :   0.134
+    Stage mbc        :   0.024
+Stage parse      :   8.543
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::NetworkTileSource compile time: 9.36241459
+ === Champlain::FileCache === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/FileCache.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.488
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.054
+    Stage mast       :   0.173
+    Stage mbc        :   0.015
+Stage parse      :   9.106
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::FileCache compile time: 9.7978445
+ === Champlain::NullTileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/NullTileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.676
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.047
+    Stage mast       :   0.064
+    Stage mbc        :   0.029
+Stage parse      :   9.162
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+Champlain::NullTileSource compile time: 9.8735654
+ === Champlain::FileTileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/FileTileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.849
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.063
+    Stage mast       :   0.095
+    Stage mbc        :   0.018
+Stage parse      :   9.194
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::FileTileSource compile time: 9.94150374
+ === Champlain::MemoryCache === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/MemoryCache.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.344
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.028
+    Stage mast       :   0.061
+    Stage mbc        :   0.024
+Stage parse      :   9.576
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::MemoryCache compile time: 10.29234509
+ === Champlain::NetworkBboxTileSource === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/NetworkBboxTileSource.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.905
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.062
+    Stage mbc        :   0.013
+Stage parse      :  10.370
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::NetworkBboxTileSource compile time: 11.03001626
+ === Champlain::Label === 
+Stage start      :   0.000
+
+    precomp lib/Champlain/Label.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.936
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.035
+    Stage mast       :   0.138
+    Stage mbc        :   0.042
+Stage parse      :  14.731
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Champlain::Label compile time: 15.49651558
+ === GTK::ChamplainEmbed === 
+Stage start      :   0.000
+
+    precomp lib/GTK/ChamplainEmbed.pm6
+    Stage start      :   0.000
+    Stage parse      :  10.695
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.198
+    Stage mbc        :   0.054
+Stage parse      :  15.858
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GTK::ChamplainEmbed compile time: 16.57144653
+
+Total compile time: 133.24393114s
