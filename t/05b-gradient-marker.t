@@ -39,8 +39,8 @@ for ^$nc {
   say "Colors { $_ }: { @rcolors.gist }";
 
   my $p = Cairo::Pattern::Gradient::Radial.create(
-    MARKER_SIZE / 2, MARKER_SIZE / 2, 0,
-    MARKER_SIZE / 2, MARKER_SIZE / 2, MARKER_SIZE * 2
+    MARKER_SIZE, MARKER_SIZE, 0,
+    MARKER_SIZE, MARKER_SIZE, MARKER_SIZE *1.5
   );
 
   for @rcolors.kv -> $k, $v {
@@ -63,7 +63,7 @@ sub draw-center ($canvas, $c, $width, $height, $ud, $r) {
     .operator = CAIRO_OPERATOR_OVER;
     .rgb(0, 0, 0);
 
-    .arc(MARKER_SIZE * 4, MARKER_SIZE * 4, MARKER_SIZE * 8, 0, 2 * π);
+    .arc(MARKER_SIZE, MARKER_SIZE, MARKER_SIZE * 1.5, 0, 2 * π);
     .close_path;
 
     .rgba(0.1, 0.1, 0.9, 1);
@@ -74,25 +74,26 @@ sub draw-center ($canvas, $c, $width, $height, $ud, $r) {
 }
 
 my ($value, $sign, $echo) = (0, 1);
-my $iteration = @colors.elems * 1e-1;
-# $*SCHEDULER.cue( in => 2, {
-#   GLib::Timeout.add(250, -> *@a {
-#     $value += $iteration * $sign;
-#     if $value.abs >= 1 {
-#       $value = 1 * $sign;
-#       $sign *= -1;
-#     }
-#     $echo.invalidate;
-#     1;
-#   })
-# });
+my $iteration = @colors.elems ** -1;
+$*SCHEDULER.cue( in => 2, {
+  GLib::Timeout.add(125, -> *@a {
+    $value += $iteration * $sign;
+    if $value >= 1 || $value < 0 {
+      $value = 1 if $value > 1;
+      $value = 0 if $value < 0;
+      $sign *= -1;
+    }
+    $echo.invalidate;
+    1;
+  })
+});
 
 sub get-pattern {
-#   my Int() $i = $value * @colors.elems;
-#   $i .= pred if $i >= @colors.elems;
-#   $i = 0     if $i < 0;
-#   say "Value = $value / Index = $i";
-  @grads[0];
+  my Int() $i = $value * @colors.elems;
+  $i .= pred if $i >= @colors.elems;
+  $i = 0     if $i < 0;
+  say "Value = $value / Index = $i";
+  @grads[$i];
 }
 
 sub draw-circle ($canvas, $c, $width, $height, $ud, $r) {
@@ -134,7 +135,7 @@ sub create-marker {
   my $canvas = Clutter::Canvas.new.setup(
     size => MARKER_SIZE xx 2
   );
-  $canvas.draw.tap(-> *@a { draw-center(|@a) });
+  #$canvas.draw.tap(-> *@a { draw-center(|@a) });
 
   my $bg = Clutter::Actor.new.setup(
     size     => MARKER_SIZE xx 2,
@@ -154,7 +155,7 @@ sub create-marker {
     size        => (8 * MARKER_SIZE) xx 2,
     pivot-point => 0.5 xx 2,
     position    => (MARKER_SIZE * -4) xx 2,
-    opacity     => 128,
+    opacity     => 178,
     content     => $echo
   );
   $echo.invalidate;
