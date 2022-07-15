@@ -40,12 +40,16 @@ for ^$nc {
 
   my $p = Cairo::Pattern::Gradient::Radial.create(
     MARKER_SIZE, MARKER_SIZE, 0,
-    MARKER_SIZE, MARKER_SIZE, MARKER_SIZE *1.5
+    MARKER_SIZE, MARKER_SIZE, MARKER_SIZE * 1.5
   );
 
   for @rcolors.kv -> $k, $v {
     say "K = $k / V = { $v.gist }";
-    $p.add_color_stop_rgb( $k * @colors.elems ** -1, |$v<rgb>.map( */256 ) )
+    $p.add_color_stop_rgba(
+      $k * @colors.elems ** -1,
+      |$v<rgb>.map( */256 ),
+      $k <= 4 ?? 1 !! 0
+    )
   }
   @grads.push: $p;
 }
@@ -76,7 +80,7 @@ sub draw-center ($canvas, $c, $width, $height, $ud, $r) {
 my ($value, $sign, $echo) = (0, 1);
 my $iteration = @colors.elems ** -1;
 $*SCHEDULER.cue( in => 2, {
-  GLib::Timeout.add(125, -> *@a {
+  GLib::Timeout.add(70, -> *@a {
     $value += $iteration * $sign;
     if $value >= 1 || $value < 0 {
       $value = 1 if $value > 1;
