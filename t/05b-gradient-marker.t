@@ -117,18 +117,12 @@ sub draw-circle ($canvas, $c, $width, $height, $ud, $r) {
     .rgb(0, 0, 0);
 
     .arc(MARKER_SIZE * 4, MARKER_SIZE * 4, 8 * MARKER_SIZE, 0, 2 * π);
-    #.close_path;
-    #.save;
+    .close_path;
 
     my $p = get-pattern;
     say "Pattern = { $p // '»undef«' } ({ $p ?? $p.WHERE !! '¿WTF?' }) - Value = { $value // '¿QT?' }";
     .pattern($p);
     .fill;
-
-    #.restore;
-    # .line_width = 2;
-    # .rgba(0.1, 0.1, 0.7, 1);
-    # .stroke;
   }
 
   $r.r = 1;
@@ -166,33 +160,6 @@ sub create-marker {
   $marker.add-child($bg2);
   # cw: MM-refactor will make this unnecessary
   $echo.unref;
-
-  # my $o-transition = Clutter::PropertyTransition.new('opacity').setup(
-  #   duration     => 1000,
-  #   repeat-count => -1,
-  #   from         => 255,
-  #   to           => 0
-  # );
-  # $bg2.easing-mode = CLUTTER_EASE_OUT_SINE;
-  # $bg2.add-transition('animate-opacity', $o-transition);
-
-  # my $sx-transition = Clutter::PropertyTransition.new('scale-x').setup(
-  #   duration     => 1000,
-  #   repeat-count => -1,
-  #   from         => 0.5,
-  #   to           => 2
-  # );
-  # $bg2.easing-mode = CLUTTER_EASE_OUT_SINE;
-  # $bg2.add-transition('animate-scale-x', $sx-transition);
-
-  # my $sy-transition = Clutter::PropertyTransition.new('scale-y').setup(
-  #   duration     => 1000,
-  #   repeat-count => -1,
-  #   from         => 0.5,
-  #   to           => 2
-  # );
-  # $bg2.easing-mode = CLUTTER_EASE_OUT_SINE;
-  # $bg2.add-transition('animate-scale-y', $sy-transition);
 
   $marker;
 }

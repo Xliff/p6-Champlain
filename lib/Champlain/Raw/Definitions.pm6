@@ -10,7 +10,7 @@ use GLib::Roles::Pointers;
 unit package Champlain::Raw::Definitions;
 
 # Forced compile counter
-constant forced = 0;
+constant forced = 186;
 
 constant CHAMPLAIN_MAP_SOURCE_OSM_OSMARENDER    is export = 'osm-osmarender';
 constant CHAMPLAIN_MAP_SOURCE_OAM               is export = 'OpenAerialMap';
@@ -32,6 +32,7 @@ constant champlain     is export = 'champlain-0.12',v0;
 constant champlain-gtk is export = 'champlain-gtk-0.12',v0;
 
 class ChamplainCoordinate            is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ChamplainErrorTileRenderer     is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainFileCache             is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainFileTileSource        is repr<CPointer> is export does GLib::Roles::Pointers { }
 class ChamplainImageRenderer         is repr<CPointer> is export does GLib::Roles::Pointers { }
